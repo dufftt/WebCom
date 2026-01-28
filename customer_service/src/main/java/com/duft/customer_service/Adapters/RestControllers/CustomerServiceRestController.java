@@ -73,7 +73,7 @@ public class CustomerServiceRestController {
             logger.info("Entered Delete Addressapi: "+id);
                 Boolean status = deleteAddressUseCase.execute(id);
             if(status){
-                return ResponseEntity.ok("Address Deleted with ID: "+id+" Status: "+status);            }
+                return ResponseEntity.ok("Address Deleted with ID: "+id+" with Status: "+status);            }
             else{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Address Not Found");
             }
