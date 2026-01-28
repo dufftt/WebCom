@@ -1,10 +1,11 @@
-package com.duft.customer_service.adapter.out.persistence;
+package com.duft.customer_service.Adapters.out.persistence.Address;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
 import com.duft.customer_service.Entities.Address;
+import com.duft.customer_service.Utils.MaperUtils.MapperUtils;
 import com.duft.customer_service.port.out.AddressRepositoryPort;
 
 @Repository
@@ -16,13 +17,14 @@ public class AddressRepositoryAdapter implements AddressRepositoryPort{
         this.jpa = jpa;
     }
 
-    //mapping from customer entity to customer
+    //mapping from AddressEntity to domain Address using MapperUtils
     private Address toDomain(AddressEntity e) {
-        return new Address(e.getAddressID(), e.getCustomerID(), e.getAddress(), e.getCity(),e.getState(),e.getCountry(),e.getPinCode());
+        return MapperUtils.map(e, Address.class);
     }
-    //mapping from customer to customer entity
+
+    //mapping from domain Address to AddressEntity using MapperUtils
     private AddressEntity toEntity(Address a) {
-        return new AddressEntity(a.getAddressID(), a.getCustomerID(), a.getAddress(), a.getCity(),a.getState(),a.getCountry(),a.getPinCode());
+        return MapperUtils.map(a, AddressEntity.class);
     }
 
     @Override

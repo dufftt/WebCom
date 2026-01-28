@@ -1,10 +1,11 @@
-package com.duft.customer_service.adapter.out.persistence;
+package com.duft.customer_service.Adapters.out.persistence.Customer;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
 import com.duft.customer_service.Entities.Customer;
+import com.duft.customer_service.Utils.MaperUtils.MapperUtils;
 import com.duft.customer_service.port.out.CustomerRepositoryPort;
 
 @Repository
@@ -17,11 +18,11 @@ public class CustomerRepositoryAdapter implements CustomerRepositoryPort {
     }
     //mapping from customer entity to customer
     private Customer toDomain(CustomerEntity e) {
-        return new Customer(e.getCustomerId(), e.getName(), e.getMobNumber(), e.getEmail());
+        return MapperUtils.map(e, Customer.class);
     }
     //mapping from customer to customer entity
     private CustomerEntity toEntity(Customer c) {
-        return new CustomerEntity(c.getCustomerID(), c.getName(), c.getMobNumber(), c.getEmail());
+        return MapperUtils.map(c, CustomerEntity.class);
     }
 
     @Override

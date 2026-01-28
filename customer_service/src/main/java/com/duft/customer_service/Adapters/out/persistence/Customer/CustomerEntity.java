@@ -1,4 +1,4 @@
-package com.duft.customer_service.adapter.out.persistence;
+package com.duft.customer_service.Adapters.out.persistence.Customer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

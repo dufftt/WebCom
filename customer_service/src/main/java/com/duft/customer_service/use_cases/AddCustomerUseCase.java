@@ -5,7 +5,7 @@ import com.duft.customer_service.port.out.CustomerRepositoryPort;
 
 public class AddCustomerUseCase {
 
-    private CustomerRepositoryPort customerRepository;
+    private final CustomerRepositoryPort customerRepository;
 
 
     public AddCustomerUseCase(CustomerRepositoryPort customerRepository) {
