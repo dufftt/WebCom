@@ -47,7 +47,7 @@ public class CustomerServiceRestController {
             return ResponseEntity.ok("Customer Created with ID: "+createdCustomer.getCustomerId());
     }
 
-     @PostMapping("/addAddress")
+    @PostMapping("/addAddress")
     public ResponseEntity<String> addAddress(@RequestBody AddressDTO address){
             logger.info("Entered Address api: "+address);
             Address addr = MapperUtils.map(address, Address.class);
