@@ -1,42 +1,20 @@
-package com.duft.customer_service.Adapters.out.persistence.Address;
+package com.duft.customer_service.Domain.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+public class Address {
 
-@Entity
-@Table(name = "address")
-public class AddressEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
     private Integer addressId;
-
-    @Column(name = "customer_id", nullable = false)
     private Integer customerId;
-
-    @Column(name = "address")
     private String address;
-
-    @Column(name = "city")
     private String city;
-
-    @Column(name = "state")
     private String state;
-
-    @Column(name = "country")
     private String country;
-
-    @Column(name = "pin_code")
     private Long pinCode;
 
-    public AddressEntity() {
+    public Address() {
     }
 
-    public AddressEntity(Integer customerId, String address, String city, String state, String country, Long pinCode) {
+    public Address(Integer addressId, Integer customerId, String address, String city, String state, String country, Long pinCode) {
+        this.addressId = addressId;
         this.customerId = customerId;
         this.address = address;
         this.city = city;
@@ -49,7 +27,7 @@ public class AddressEntity {
         return addressId;
     }
 
-    public void setAddressId(Integer addressId) {  // Changed from int to Integer
+    public void setAddressId(Integer addressId) {
         this.addressId = addressId;
     }
 
@@ -104,9 +82,9 @@ public class AddressEntity {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("AddressEntity{");
-        sb.append("addressId=").append(addressId);
-        sb.append(", customerId=").append(customerId);
+        sb.append("Address{");
+        sb.append("addressID=").append(addressId);
+        sb.append(", customerID=").append(customerId);
         sb.append(", address=").append(address);
         sb.append(", city=").append(city);
         sb.append(", state=").append(state);

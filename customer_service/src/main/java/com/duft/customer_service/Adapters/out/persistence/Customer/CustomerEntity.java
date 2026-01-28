@@ -2,6 +2,8 @@ package com.duft.customer_service.Adapters.out.persistence.Customer;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,10 +12,11 @@ import jakarta.persistence.Table;
 public class CustomerEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private Integer customerId;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "mob_number")
@@ -24,8 +27,7 @@ public class CustomerEntity {
 
     // constructors, getters, setters
     public CustomerEntity() {}
-    public CustomerEntity(Integer customerId, String name, Long mobNumber, String email) {
-        this.customerId = customerId;
+    public CustomerEntity(String name, Long mobNumber, String email) {
         this.name = name;
         this.mobNumber = mobNumber;
         this.email = email;
@@ -38,4 +40,16 @@ public class CustomerEntity {
     public void setMobNumber(Long mobNumber) { this.mobNumber = mobNumber; }
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("CustomerEntity{");
+        sb.append("customerId=").append(customerId);
+        sb.append(", name=").append(name);
+        sb.append(", mobNumber=").append(mobNumber);
+        sb.append(", email=").append(email);
+        sb.append('}');
+        return sb.toString();
+    }
 }

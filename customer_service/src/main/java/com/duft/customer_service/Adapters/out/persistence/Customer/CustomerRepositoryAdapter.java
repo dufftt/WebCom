@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.duft.customer_service.Entities.Customer;
+import com.duft.customer_service.Domain.Entities.Customer;
 import com.duft.customer_service.Utils.MaperUtils.MapperUtils;
 import com.duft.customer_service.port.out.CustomerRepositoryPort;
 
@@ -33,7 +33,15 @@ public class CustomerRepositoryAdapter implements CustomerRepositoryPort {
     @Override
     public Customer save(Customer customer) {
         CustomerEntity e = toEntity(customer);
-        CustomerEntity saved = jpa.save(e);
+        // Only set ID if it's a new entity (ID is 0 or null)
+        // if (customer.getCustomerId() == null || customer.getCustomerId() <= 0) {
+        //     e.setCustomerId(null); // Let the database generate the ID
+        // } else {
+        //     e.setCustomerId(customer.getCustomerId()); // Preserve existing ID
+        // }
+        e.setCustomerId(null);
+        CustomerEntity saved = jpa.saveAndFlush(e);
+        System.out.println(saved.toString());
         return toDomain(saved);
     }
 }
