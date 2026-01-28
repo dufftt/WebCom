@@ -1,23 +1,16 @@
-package com.duft.customer_service.Adapters.WebDTOs;
+package com.duft.customer_service.Domain.Entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+public class Customer {
 
-import jakarta.annotation.Nonnull;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-public class CustomerDTO {
     private Integer customerId;
-    @Nonnull
-    @JsonProperty("name")
     private String name;
-    @Nonnull
-    @JsonProperty("mobNumber")
     private Long mobNumber;
-    @JsonProperty("email")
     private String email;
 
-    public CustomerDTO(Integer customerId, String name, Long mobNumber, String email) {
+    public Customer() {
+    }
+
+    public Customer(Integer customerId, String name, Long mobNumber, String email) {
         this.customerId = customerId;
         this.name = name;
         this.mobNumber = mobNumber;
@@ -59,7 +52,7 @@ public class CustomerDTO {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("CustomerDTO{");
+        sb.append("Customer{");
         sb.append("customerId=").append(customerId);
         sb.append(", name=").append(name);
         sb.append(", mobNumber=").append(mobNumber);
