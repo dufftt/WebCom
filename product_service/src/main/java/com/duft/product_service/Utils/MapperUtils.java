@@ -141,6 +141,11 @@ public final class MapperUtils {
         return null;
     }
 
+    public static List<Object> mapperList(List<Object> source, Class targetClass){
+        if(source==null) return null;
+        return source.stream().map(s -> map(s, targetClass)).collect(Collectors.toList());
+    }
+
     public static <S, T> List<T> mapList(Collection<S> source, Class<T> targetClass) {
         if (source == null) return null;
         return source.stream().map(s -> map(s, targetClass)).collect(Collectors.toList());

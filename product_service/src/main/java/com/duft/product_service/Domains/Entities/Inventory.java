@@ -24,6 +24,15 @@ public class Inventory {
     public void setLockedQuantities(Integer lockedQuantities) {
         this.lockedQuantities = lockedQuantities;
     }
+    public void lockQuantity(Integer quantity){
+        this.setLockedQuantities(this.lockedQuantities+quantity);
+        this.setQuantity(this.quantity - quantity);
+    }
+    public void releaseInventory(Integer quantity){
+        this.setLockedQuantities(this.lockedQuantities-quantity);
+                this.setQuantity(this.quantity + quantity);
+
+    }
     public Integer getInventoryId() {
         return inventoryId;
     }

@@ -1,5 +1,6 @@
 package com.duft.product_service.Adapters.out.Product;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -66,6 +67,11 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort{
     @Override
     public Integer getProductPriceByProductID(Integer id) {
        return productRepositoryJPA.getPriceByProductId(id);
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return MapperUtils.mapList(productRepositoryJPA.findAll(), Product.class);
     }
 
 }

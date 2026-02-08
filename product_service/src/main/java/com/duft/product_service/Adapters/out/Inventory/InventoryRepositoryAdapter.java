@@ -101,4 +101,14 @@ public class InventoryRepositoryAdapter implements InventoryRepositoryPort {
        return inventoryRepositoryJPA.getInventoryByProductId(id).stream().map(InventoryEntity::getLocation).toList();
     }
 
+    @Override
+    public List<Inventory> getAllInventories() {
+        return MapperUtils.mapList(inventoryRepositoryJPA.findAll(), Inventory.class);
+    }
+
+    @Override
+    public List<Inventory> findByProductID(Integer id) {
+        return MapperUtils.mapList(inventoryRepositoryJPA.getInventoryByProductId(id), Inventory.class);
+    }
+
 }

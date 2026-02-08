@@ -18,4 +18,6 @@ public interface InventoryRepositoryPort {
     Boolean lockInventoryByInventoryID(Integer id);
     Boolean releaseInventoryByInventoryID(Integer id);
     List<String> getLocationByProductId(Integer id);
+    List<Inventory> getAllInventories();
+    List<Inventory> findByProductID(Integer id);
 }
