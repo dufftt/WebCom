@@ -49,6 +49,14 @@ public class InventoryDTO {
         this.location = location;
     }
 
+    public boolean isValidInventoryDTO(){
+        if(this.getInventoryId()!=null && this.getProductId()!=null && this.getQuantity()!=null && this.getLocation()!=null) 
+        {
+            return true;
+        }
+       else return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -37,9 +37,10 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort{
     @Override
     public Product save(Product product) {
         ProductEntity e = toEntity(product);
-        product.setProductId(null);
+        e.setProductId(null);
+        logger.info("Saving Product: "+e.toString());
         ProductEntity saved = productRepositoryJPA.saveAndFlush(e);
-        logger.info("Saving Product: "+saved.toString());
+        logger.info("After save Product: "+saved.toString());
         return toDomain(saved);
     }
 
@@ -60,6 +61,11 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort{
         ProductEntity saved = productRepositoryJPA.saveAndFlush(e);
         logger.info("Updated Product: "+saved.toString());
         return toDomain(saved);
+    }
+
+    @Override
+    public Integer getProductPriceByProductID(Integer id) {
+       return productRepositoryJPA.getPriceByProductId(id);
     }
 
 }

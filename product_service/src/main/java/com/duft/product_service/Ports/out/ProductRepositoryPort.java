@@ -10,4 +10,5 @@ public interface ProductRepositoryPort {
     Product save(Product product);
     Boolean DeleteProductById(Integer id);
     Product UpdateProduct(Product product);
+    Integer getProductPriceByProductID(Integer id);
 }

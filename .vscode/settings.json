@@ -1,3 +1,6 @@
 {
-    "java.compile.nullAnalysis.mode": "disabled"
+    "java.compile.nullAnalysis.mode": "disabled",
+    "java.jdt.ls.vmargs": "-Xmx1G -XX:+UseSerialGC",
+    "java.autobuild.enabled": false
+
 }

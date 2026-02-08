@@ -11,17 +11,27 @@ import jakarta.persistence.Table;
 public class InventoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Integer inventoryId;
+    private Integer inventoryId;
     private Integer productId;
     private Integer quantity;
     private String location;
-    public InventoryEntity(Integer inventoryId, Integer productId, Integer quantity, String location) {
+    private Integer lockedQuantities = 0;
+    public InventoryEntity(Integer inventoryId, Integer productId, Integer quantity, String location,
+            Integer lockedQuantities) {
         this.inventoryId = inventoryId;
         this.productId = productId;
         this.quantity = quantity;
         this.location = location;
+        this.lockedQuantities = lockedQuantities;
     }
+
     public InventoryEntity() {
+    }
+    public Integer getLockedQuantities() {
+        return lockedQuantities;
+    }
+    public void setLockedQuantities(Integer lockedQuantities) {
+        this.lockedQuantities = lockedQuantities;
     }
     public Integer getInventoryId() {
         return inventoryId;
@@ -50,7 +60,7 @@ public class InventoryEntity {
     @Override
     public String toString() {
         return "InventoryEntity [inventoryId=" + inventoryId + ", productId=" + productId + ", quantity=" + quantity
-                + ", location=" + location + "]";
+                + ", location=" + location + ", lockedQuantities=" + lockedQuantities + "]";
     }
     
 }
