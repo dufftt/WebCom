@@ -1,5 +1,6 @@
 package com.duft.product_service.Adapters.out.Inventory;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -40,6 +41,8 @@ public class InventoryRepositoryAdapter implements InventoryRepositoryPort {
     @Override
     public Inventory save(Inventory inventory) {
         InventoryEntity e = toEntity(inventory);
+        e.setInventoryId(null);
+        logger.info("Saving Inventory: "+e.toString());
         InventoryEntity saved = inventoryRepositoryJPA.saveAndFlush(e);
         return toDomain(saved);
     }
@@ -61,6 +64,41 @@ public class InventoryRepositoryAdapter implements InventoryRepositoryPort {
         InventoryEntity saved = inventoryRepositoryJPA.saveAndFlush(e);
         logger.info("Updating Inventory: "+saved.toString());
         return toDomain(saved);
+    }
+
+    @Override
+    public List<Inventory> getInventoryByProductId(Integer id) {
+        return MapperUtils.mapList(inventoryRepositoryJPA.getInventoryByProductId(id), Inventory.class);
+    }
+
+    //TODO rewrite this adapter later to only returns Inventory based on product id and then let domain make the decision whether any location has quantity greater than 0 or not
+    @Override
+    public Boolean getInventoryAvailablewithProductId(Integer id) {
+        return inventoryRepositoryJPA.getInventoryByProductId(id).stream().anyMatch(i -> i.getQuantity() > 0);
+    }
+    //TODO rewrite this adapter later such that it will only update inventory and reduction happened inside domain layer
+    @Override
+    public void reduceInventoryQuantityByInventoryID(Integer id) {
+         inventoryRepositoryJPA.findById(id).ifPresent(inventoryEntity -> {
+            inventoryEntity.setQuantity(inventoryEntity.getQuantity() - 1);
+            inventoryRepositoryJPA.save(inventoryEntity);
+         });
+        
+    }
+
+    @Override
+    public Boolean lockInventoryByInventoryID(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Boolean releaseInventoryByInventoryID(Integer id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    //TODO rewrite this adapter to only return inventory and then perform location extraction in domain layer
+    @Override
+    public List<String> getLocationByProductId(Integer id) {
+       return inventoryRepositoryJPA.getInventoryByProductId(id).stream().map(InventoryEntity::getLocation).toList();
     }
 
 }

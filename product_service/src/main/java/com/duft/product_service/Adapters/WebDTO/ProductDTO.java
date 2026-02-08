@@ -49,6 +49,14 @@ public class ProductDTO {
         this.price = price;
     }
 
+    public boolean isValidProductDTO(){
+       if(this.getProductId()!=null && this.getProductName()!=null && this.getProductDescription()!=null && this.getPrice()!=null) 
+        {
+            return true;
+        }
+       else return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

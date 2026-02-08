@@ -3,4 +3,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepositoryJPA extends JpaRepository<ProductEntity, Integer>{
 
+    public Integer getPriceByProductId(Integer id);
+
 }
