@@ -6,12 +6,17 @@ public class InventoryDTO {
     private Integer productId;
     private Integer quantity;
     private String location;
+    private Integer lockedQuantities = 0;
 
-    public InventoryDTO(Integer inventoryId, String location, Integer productId, Integer quantity) {
+    
+
+    public InventoryDTO(Integer inventoryId, Integer productId, Integer quantity, String location,
+            Integer lockedQuantities) {
         this.inventoryId = inventoryId;
-        this.location = location;
         this.productId = productId;
         this.quantity = quantity;
+        this.location = location;
+        this.lockedQuantities = lockedQuantities;
     }
 
     public InventoryDTO() {
@@ -67,6 +72,14 @@ public class InventoryDTO {
         sb.append(", location=").append(location);
         sb.append('}');
         return sb.toString();
+    }
+
+    public Integer getLockedQuantities() {
+        return lockedQuantities;
+    }
+
+    public void setLockedQuantities(Integer lockedQuantities) {
+        this.lockedQuantities = lockedQuantities;
     }
 
 

@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "inventory")
@@ -13,6 +14,7 @@ public class InventoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer inventoryId;
     private Integer productId;
+    @PositiveOrZero(message="quantity must never go to negative")
     private Integer quantity;
     private String location;
     private Integer lockedQuantities = 0;

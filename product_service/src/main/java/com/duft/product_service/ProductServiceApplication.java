@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import com.duft.product_service.Adapters.Controllers.ProductRestController;
 import com.duft.product_service.Adapters.out.Inventory.InventoryRepositoryAdapter;
 import com.duft.product_service.Adapters.out.Product.ProductRepositoryAdapter;
+import com.duft.product_service.Domains.Services.ProductInventoryService;
 import com.duft.product_service.Domains.Use_Cases.AddInventoryUseCase;
 import com.duft.product_service.Domains.Use_Cases.AddProductUseCase;
 import com.duft.product_service.Domains.Use_Cases.DeleteInventoryUseCase;
@@ -60,10 +61,14 @@ public class ProductServiceApplication {
 		return new DeleteInventoryUseCase(inventoryRepositoryPort);
 	}
 	@Bean
-	public ProductRestController productRestController(AddProductUseCase addProductUseCase, UpdateProductUseCase updateProductUseCase, DeleteProductUseCase deleteProductUseCase,
-			AddInventoryUseCase addInventoryUseCase, UpdateInventoryUseCase updateInventoryUseCase, DeleteInventoryUseCase deleteInventoryUseCase){
-				return new ProductRestController(addProductUseCase, updateProductUseCase, deleteProductUseCase,
-						addInventoryUseCase, updateInventoryUseCase, deleteInventoryUseCase);
+	public ProductInventoryService productInventoryService(AddProductUseCase addProductUseCase, UpdateProductUseCase updateProductUseCase, DeleteProductUseCase deleteProductUseCase,
+			AddInventoryUseCase addInventoryUseCase, UpdateInventoryUseCase updateInventoryUseCase, DeleteInventoryUseCase deleteInventoryUseCase, ProductRepositoryPort productRepositoryPort, InventoryRepositoryPort inventoryRepositoryPort){
+				return new ProductInventoryService(addProductUseCase, updateProductUseCase, deleteProductUseCase,
+						addInventoryUseCase, updateInventoryUseCase, deleteInventoryUseCase, productRepositoryPort,inventoryRepositoryPort);
 			}
+	@Bean
+	public ProductRestController productRestController(ProductInventoryService productInventoryService){
+		return new ProductRestController(productInventoryService);
+	}
 
 }
