@@ -1,6 +1,5 @@
 package com.duft.product_service.Adapters.Controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -144,12 +143,12 @@ public class ProductRestController {
     public ResponseEntity<Boolean> releaseInventory(@RequestBody LockOrReleaseInventoryDTO request){
             return ResponseEntity.ok(productInventoryService.releaseInventory(request.getInventoryId(), request.getQuantity()));
     }
-    @PostMapping("/getLocationByProductId")
+    @GetMapping("/getLocationByProductId")
     public ResponseEntity<List<String>> getLocationByProductId(@RequestParam Integer id){
         return ResponseEntity.status(HttpStatus.OK).body(productInventoryService.getLocationsByProductId(id));
     }
-    @PostMapping("/getProductPriceByProductID")
-    public ResponseEntity<Integer> getProductPriceByProductID(Integer id){
+    @GetMapping("/getProductPriceByProductID")
+    public ResponseEntity<Integer> getProductPriceByProductID(@RequestParam Integer id){
         return ResponseEntity.status(HttpStatus.OK).body(productInventoryService.getProductPriceByProductId(id));
     }
 
