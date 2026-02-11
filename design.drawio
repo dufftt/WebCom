@@ -911,7 +911,7 @@
                     <mxGeometry x="660" y="1610" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="263" value="Assets" style="childLayout=tableLayout;recursiveResize=0;strokeColor=#98bf21;fillColor=#A7C942;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="870" y="2380" width="340" height="160" as="geometry"/>
+                    <mxGeometry x="870" y="2383.5" width="340" height="222" as="geometry"/>
                 </mxCell>
                 <mxCell id="264" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;strokeColor=inherit;fillColor=#ffffff;" parent="263" vertex="1">
                     <mxGeometry width="340" height="33" as="geometry"/>
@@ -922,13 +922,13 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="266" value="Parameter" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=#A7C942;align=center;fontStyle=1;fontColor=#FFFFFF;html=1;" parent="264" vertex="1">
-                    <mxGeometry x="110" width="150" height="33" as="geometry">
-                        <mxRectangle width="150" height="33" as="alternateBounds"/>
+                    <mxGeometry x="110" width="170" height="33" as="geometry">
+                        <mxRectangle width="170" height="33" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="267" value="return" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=#A7C942;align=center;fontStyle=1;fontColor=#FFFFFF;html=1;" parent="264" vertex="1">
-                    <mxGeometry x="260" width="80" height="33" as="geometry">
-                        <mxRectangle width="80" height="33" as="alternateBounds"/>
+                    <mxGeometry x="280" width="60" height="33" as="geometry">
+                        <mxRectangle width="60" height="33" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="268" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;strokeColor=inherit;fillColor=#ffffff;" parent="263" vertex="1">
@@ -940,13 +940,13 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="270" value="List&amp;lt;productID&amp;gt;,addressID" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;align=center;whiteSpace=wrap;html=1;" parent="268" vertex="1">
-                    <mxGeometry x="110" width="150" height="32" as="geometry">
-                        <mxRectangle width="150" height="32" as="alternateBounds"/>
+                    <mxGeometry x="110" width="170" height="32" as="geometry">
+                        <mxRectangle width="170" height="32" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="271" value="charge" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;align=center;whiteSpace=wrap;html=1;" parent="268" vertex="1">
-                    <mxGeometry x="260" width="80" height="32" as="geometry">
-                        <mxRectangle width="80" height="32" as="alternateBounds"/>
+                    <mxGeometry x="280" width="60" height="32" as="geometry">
+                        <mxRectangle width="60" height="32" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="272" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=1;strokeColor=inherit;fillColor=#EAF2D3;" parent="263" vertex="1">
@@ -958,13 +958,13 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="274" value="&amp;lt;orderID,List&amp;lt;productID&amp;gt;&amp;gt;" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="272" vertex="1">
-                    <mxGeometry x="110" width="150" height="31" as="geometry">
-                        <mxRectangle width="150" height="31" as="alternateBounds"/>
+                    <mxGeometry x="110" width="170" height="31" as="geometry">
+                        <mxRectangle width="170" height="31" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="275" value="shipmentID" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="272" vertex="1">
-                    <mxGeometry x="260" width="80" height="31" as="geometry">
-                        <mxRectangle width="80" height="31" as="alternateBounds"/>
+                    <mxGeometry x="280" width="60" height="31" as="geometry">
+                        <mxRectangle width="60" height="31" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="276" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=0;strokeColor=inherit;fillColor=#ffffff;" parent="263" vertex="1">
@@ -976,13 +976,13 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="278" value="orderID" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;fontStyle=0;align=center;whiteSpace=wrap;html=1;" parent="276" vertex="1">
-                    <mxGeometry x="110" width="150" height="33" as="geometry">
-                        <mxRectangle width="150" height="33" as="alternateBounds"/>
+                    <mxGeometry x="110" width="170" height="33" as="geometry">
+                        <mxRectangle width="170" height="33" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="279" value="shipmentDTO" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;fontStyle=0;align=center;whiteSpace=wrap;html=1;" parent="276" vertex="1">
-                    <mxGeometry x="260" width="80" height="33" as="geometry">
-                        <mxRectangle width="80" height="33" as="alternateBounds"/>
+                    <mxGeometry x="280" width="60" height="33" as="geometry">
+                        <mxRectangle width="60" height="33" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="280" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=1;strokeColor=inherit;fillColor=#EAF2D3;" parent="263" vertex="1">
@@ -994,13 +994,49 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="282" value="trackID" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="280" vertex="1">
-                    <mxGeometry x="110" width="150" height="31" as="geometry">
-                        <mxRectangle width="150" height="31" as="alternateBounds"/>
+                    <mxGeometry x="110" width="170" height="31" as="geometry">
+                        <mxRectangle width="170" height="31" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="283" value="shipmentDTO" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="280" vertex="1">
-                    <mxGeometry x="260" width="80" height="31" as="geometry">
-                        <mxRectangle width="80" height="31" as="alternateBounds"/>
+                    <mxGeometry x="280" width="60" height="31" as="geometry">
+                        <mxRectangle width="60" height="31" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="347" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=1;strokeColor=inherit;fillColor=#EAF2D3;" parent="263" vertex="1">
+                    <mxGeometry y="160" width="340" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="348" value="/getAllShiment" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="347" vertex="1">
+                    <mxGeometry width="110" height="31" as="geometry">
+                        <mxRectangle width="110" height="31" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="349" value="" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="347" vertex="1">
+                    <mxGeometry x="110" width="170" height="31" as="geometry">
+                        <mxRectangle width="170" height="31" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="350" value="List&amp;lt;shipmentDTO&amp;gt;" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="347" vertex="1">
+                    <mxGeometry x="280" width="60" height="31" as="geometry">
+                        <mxRectangle width="60" height="31" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="351" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;dropTarget=0;collapsible=0;recursiveResize=0;expand=0;fontStyle=1;strokeColor=inherit;fillColor=#EAF2D3;" parent="263" vertex="1">
+                    <mxGeometry y="191" width="340" height="31" as="geometry"/>
+                </mxCell>
+                <mxCell id="352" value="/updateShimentStatus" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="351" vertex="1">
+                    <mxGeometry width="110" height="31" as="geometry">
+                        <mxRectangle width="110" height="31" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="353" value="Map&amp;lt;shipmentId,status&amp;gt;" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="351" vertex="1">
+                    <mxGeometry x="110" width="170" height="31" as="geometry">
+                        <mxRectangle width="170" height="31" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="354" value="Boolean" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="351" vertex="1">
+                    <mxGeometry x="280" width="60" height="31" as="geometry">
+                        <mxRectangle width="60" height="31" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="342" value="Spring Clound" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -1012,10 +1048,10 @@
                 <mxCell id="344" value="Load Balancing" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="420" y="560" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="345" value="API versioning" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="345" value="API versioning" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="110" y="520" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="346" value="secret management" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="346" value="secret management" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="90" y="560" width="60" height="30" as="geometry"/>
                 </mxCell>
             </root>
