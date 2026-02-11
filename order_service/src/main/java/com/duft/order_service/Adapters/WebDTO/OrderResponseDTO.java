@@ -1,66 +1,82 @@
-package com.duft.order_service.Adapters.out.Order;
+package com.duft.order_service.Adapters.WebDTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.List;
 
-@Entity
-@Table(name="Orders")
-public class OrderEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderId;
+public class OrderResponseDTO {
+
+    private Integer OrderId;
     private Integer customerId;
-    private Boolean status = false;
+    private Boolean status;
     private Integer total;
     private String created_date;
+    private List<OrderItemResponseDTO> orderItems;
     
-    public OrderEntity(Integer orderId, Integer customerId, Boolean status, Integer total, String created_date) {
-        this.orderId = orderId;
+    public OrderResponseDTO(Integer orderId, Integer customerId, Boolean status, Integer total, String created_date,
+            List<OrderItemResponseDTO> orderItems) {
+        OrderId = orderId;
         this.customerId = customerId;
         this.status = status;
         this.total = total;
         this.created_date = created_date;
+        this.orderItems = orderItems;
     }
-    public OrderEntity() {
+
+    public OrderResponseDTO() {
     }
+
     public Integer getOrderId() {
-        return orderId;
+        return OrderId;
     }
+
     public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+        OrderId = orderId;
     }
+
     public Integer getCustomerId() {
         return customerId;
     }
+
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
+
     public Boolean getStatus() {
         return status;
     }
+
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
     public Integer getTotal() {
         return total;
     }
+
     public void setTotal(Integer total) {
         this.total = total;
     }
+
     public String getCreated_date() {
         return created_date;
     }
+
     public void setCreated_date(String created_date) {
         this.created_date = created_date;
     }
-    @Override
-    public String toString() {
-        return "OrderEntity [OrderId=" + orderId + ", customer_id=" + customerId + ", status=" + status + ", total="
-                + total + ", created_date=" + created_date + "]";
+
+    public List<OrderItemResponseDTO> getOrderItems() {
+        return orderItems;
     }
 
-    
+    public void setOrderItems(List<OrderItemResponseDTO> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderResponseDTO [OrderId=" + OrderId + ", customer_id=" + customerId + ", status=" + status
+                + ", total=" + total + ", created_date=" + created_date + ", orderItems=" + orderItems + "]";
+    }
+
+
 }
