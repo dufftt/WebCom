@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "OrderServiceApplication",
+            "request": "launch",
+            "mainClass": "com.duft.order_service.OrderServiceApplication",
+            "projectName": "order_service"
+        },
+        {
+            "type": "java",
             "name": "ProductServiceApplication",
             "request": "launch",
             "mainClass": "com.duft.product_service.ProductServiceApplication"
