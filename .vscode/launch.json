@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PaymentServiceApplication",
+            "request": "launch",
+            "mainClass": "com.duft.payment_service.PaymentServiceApplication",
+            "projectName": "payment_service"
+        },
+        {
+            "type": "java",
             "name": "ShippingServiceApplication",
             "request": "launch",
             "mainClass": "com.duft.shipping_service.ShippingServiceApplication",
