@@ -1,0 +1,60 @@
+.shipping-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f1f3f5; // Subtle blue-gray background
+  padding: 40px;
+  max-width: 500px;
+  font-family: sans-serif;
+
+  .shipping-card {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+
+    &.selected {
+      border: 2px solid #000; // Strong black border for selection
+    }
+
+    .checkbox-container {
+      margin-right: 20px;
+      input { display: none; } // Hide real checkbox
+      .checkmark {
+        display: block;
+        width: 24px;
+        height: 24px;
+        border: 1px solid #000;
+        position: relative;
+      }
+      input:checked + .checkmark::after {
+        content: '✓';
+        position: absolute;
+        left: 5px;
+        top: 0px;
+        font-size: 18px;
+      }
+    }
+
+    .shipping-info {
+      h3 { margin: 0; font-size: 18px; font-weight: 700; }
+      p { margin: 5px 0 0; color: #333; font-size: 15px; }
+    }
+  }
+
+  .payment-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+    &:hover { opacity: 0.8; }
+  }
+}

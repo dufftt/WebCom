@@ -4,11 +4,14 @@ public class ShipmentRequestDTO {
     private Integer customerId;
     private Integer addressId;
     private Integer orderId;
+    private String carrier;
     public ShipmentRequestDTO(Integer customerId, Integer addressId, Integer orderId) {
         this.customerId = customerId;
         this.addressId = addressId;
         this.orderId = orderId;
     }
+
+    
     public ShipmentRequestDTO() {
     }
     public Integer getCustomerId() {

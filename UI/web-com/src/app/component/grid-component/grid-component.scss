@@ -1,0 +1,47 @@
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 70rem;
+    margin: 2rem auto;
+}
+
+.heading {
+    font-size: 2rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.product-card {
+  display: flex;
+  width: 80%;
+  margin: 0 auto 4rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+img {
+    width: 100%;
+}
+
+.price {
+  font-weight: bold;
+  color: #3f51b5;
+}
+
+.btn {
+    background-color: #ffeb3b !important;
+    color: #000 !important;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 700px) {
+    .list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 1000px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

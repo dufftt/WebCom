@@ -1,0 +1,22 @@
+.navbar {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.nav-title {
+  font-family: "Roboto", serif;
+}
+
+img {
+    width: 2rem;
+    padding-right: .25rem;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.nav-items-container {
+  display: flex;
+  align-items: center; /* Vertically centers the search bar and buttons */
+  gap: 16px;          /* Adds consistent space between the bar and links */
+}

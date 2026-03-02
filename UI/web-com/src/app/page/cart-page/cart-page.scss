@@ -1,0 +1,44 @@
+.cart-page-wrapper {
+  display: flex;
+  gap: 80px; // Generous space between list and summary
+  padding: 80px;
+  background-color: #f1f3f5; // Subtle blue-gray background
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  .cart-main {
+    flex: 2; // Takes up 2/3 of the width
+    
+    .cart-title {
+      font-size: 32px; font-weight: 700; margin: 0 0 10px 0;
+    }
+    
+    .subtitle {
+      color: #333; font-size: 16px; margin-bottom: 40px;
+      a { color: #000; text-decoration: underline; }
+    }
+  }
+
+  .cart-sidebar {
+    flex: 1; // Takes up 1/3 of the width
+    position: sticky;
+    top: 40px; // Keeps summary visible as you scroll long carts
+  }
+}
+
+  .checkout-btn {
+    width: 100%;
+    padding: 18px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }

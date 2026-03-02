@@ -3,8 +3,6 @@ package com.duft.shipping_service.domain.services;
 import java.util.List;
 import java.util.UUID;
 
-import org.jspecify.annotations.Nullable;
-
 import com.duft.shipping_service.Adapters.WebDTO.UpdateStatusDTO;
 import com.duft.shipping_service.domain.entities.Shipments;
 import com.duft.shipping_service.domain.enums.Carriers;
@@ -69,6 +67,12 @@ public Shipments trackShipment(String trackId) {
 public Boolean updateShipmentStatus(List<UpdateStatusDTO> updateStatusDTO) {
     shipmentRepositoryPort.updateShipmentStatus(updateStatusDTO);
     return true;
+}
+
+//make sure to cache this once fetched so next time no need to fetch again
+public Integer calculateShippingCost(Integer addressId, String carrier) {
+    
+    return 0;
 }
 
 

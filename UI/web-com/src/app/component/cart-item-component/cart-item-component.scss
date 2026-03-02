@@ -1,0 +1,58 @@
+.cart-item {
+  display: flex;
+  padding: 24px 0;
+  border-bottom: 1px solid #d1d5db; // Matches the divider line in image
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc; // Match the subtle background tint
+
+  .product-image {
+    width: 150px;
+    height: 150px;
+    background-color: #c4c4c4; // Gray placeholder from image
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+
+  .product-info {
+    flex-grow: 1; // Takes up middle space
+    display: flex;
+    flex-direction: column;
+
+    .product-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+    }
+
+    .product-meta {
+      font-size: 14px;
+      color: #333;
+      margin: 2px 0;
+    }
+
+    .product-price {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+  }
+
+  .product-actions {
+    display: flex;
+    align-items: flex-end; // Pushes "Remove" to the bottom right
+
+    .remove-btn {
+      background: none;
+      border: none;
+      text-decoration: underline;
+      font-size: 14px;
+      cursor: pointer;
+      color: #000;
+      padding: 0;
+      
+      &:hover {
+        color: #ef4444; // Red hover effect
+      }
+    }
+  }
+}
