@@ -53,5 +53,10 @@ public class ShipmentRestController {
         return ResponseEntity.ok(shipmentService.updateShipmentStatus(updateStatusDTO));
     }
 
+    // @GetMapping("/shippingCharge")
+    // public ResponseEntity<String> calculateShippingCost(){
+    //     String cost = shipmentService.calculateShippingCost(2,'f').toString();
+    //     return ResponseEntity.ok(cost);
+    // }
 
 }

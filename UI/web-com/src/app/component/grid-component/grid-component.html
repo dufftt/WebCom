@@ -1,0 +1,19 @@
+<section>
+    <h2 class="heading">Products</h2>
+
+    <div class="list">
+        @for (product of productList; track product.productId) {
+        <mat-card class="product-card" (click)="goToProduct(product.productId)">
+            <img [src]="product.productImageUrl" alt="{{product.productName}}">
+            <mat-card-content>
+                <h3>{{product.productName}}</h3>
+                <h3 class="price">${{product.productPrice}}</h3>
+            </mat-card-content>
+            <mat-card-actions>
+                <button matButton="filled" class="btn" (click)="addToCart()">Add to Cart</button>
+            </mat-card-actions>
+        </mat-card>
+        }
+
+    </div>
+</section>

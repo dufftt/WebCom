@@ -1,0 +1,22 @@
+<div class="cart-page-wrapper">
+  <!-- Left Side: Items List -->
+  <div class="cart-main">
+    <h1 class="cart-title">Your cart</h1>
+    <p class="subtitle">Not ready to checkout? <a routerLink="/productList">Continue Shopping</a></p>
+    
+    <div class="items-list">
+      <!-- Loop through items here -->
+      <!-- <app-order-item *ngFor="let i of [1, 2]"></app-order-item> -->
+@for (item of itemList; track item.id) {
+       <app-cart-item-component [item] = "item"/>
+}
+    </div>
+  </div>
+
+  <!-- Right Side: Order Summary -->
+  <aside class="cart-sidebar">
+    <app-order-summary-component/>
+      <button class="checkout-btn" (click)="gotToCheckout()">Continue to checkout</button>
+
+  </aside>
+</div>

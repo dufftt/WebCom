@@ -1,0 +1,5 @@
+<mat-form-field appearance="outline" class="search-field">
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="query" (keyup.enter)="emitSearch()" placeholder="Pizza">
+    </mat-form-field>

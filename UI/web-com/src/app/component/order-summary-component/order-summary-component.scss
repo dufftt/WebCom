@@ -1,0 +1,57 @@
+.order-summary {
+  background-color: #f1f3f5; // Matches the light-grey background in image
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  font-family: 'Inter', sans-serif;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+
+  .coupon-section {
+    margin-bottom: 30px;
+    input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #707070; // Sharp dark-grey border
+      background: transparent;
+      outline: none;
+      &::placeholder { color: #b0b0b0; }
+    }
+  }
+
+  .summary-details {
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #333;
+
+      .price { font-weight: 600; }
+      
+      .helper-text {
+        font-size: 14px;
+        color: #888;
+      }
+    }
+
+    .total-row {
+      margin-top: 15px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .summary-divider {
+      border: 0;
+      border-top: 1px solid #333; // Darker line for the total section
+      margin: 20px 0;
+    }
+  }
+
+
+}

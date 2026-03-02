@@ -1,0 +1,8 @@
+.hero {
+  position: relative;
+  height: 75vh; /* full screen hero */
+  background: url('/wall2.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

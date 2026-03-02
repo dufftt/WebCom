@@ -1,0 +1,64 @@
+<div class="address-checkout">
+  <!-- 1. Checkout Stepper -->
+  <!-- <div class="checkout-stepper">
+    <span class="step active">Address</span>
+    <div class="line"></div>
+    <span class="step">Shipping</span>
+    <div class="line"></div>
+    <span class="step">Payment</span>
+  </div> -->
+
+  <!-- <h2>Shipping Information</h2> -->
+
+  <form class="address-form">
+    <!-- Row 1: Split Name -->
+    <div class="form-row split">
+      <input type="text" placeholder="First Name">
+      <input type="text" placeholder="Last Name">
+    </div>
+
+    <!-- Row 2: Full Address -->
+    <div class="form-row">
+      <input type="text" placeholder="Address">
+    </div>
+
+    <!-- Row 3: Apartment (Optional) -->
+    <div class="form-row">
+      <input type="text" placeholder="Apartment, suite, etc (optional)">
+    </div>
+
+    <!-- Row 4: City -->
+    <div class="form-row">
+      <input type="text" placeholder="City">
+    </div>
+
+    <!-- Row 5: Three Columns (Country, City/State, Zip) -->
+    <div class="form-row three-col">
+      <div class="select-wrapper">
+        <select>
+          <option>Country</option>
+        </select>
+      </div>
+      <div class="select-wrapper">
+        <select>
+          <option>City</option>
+        </select>
+      </div>
+      <input type="text" placeholder="Zipcode">
+    </div>
+
+    <!-- Row 6: Optional -->
+    <div class="form-row">
+      <input type="text" placeholder="Optional">
+    </div>
+
+    <!-- Row 7: Checkbox -->
+    <div class="checkbox-row">
+      <input type="checkbox" id="save-info">
+      <label for="save-info">Save contact information</label>
+    </div>
+
+    <!-- Action Button -->
+    <!-- <button type="submit" class="continue-btn">Save Address & Continue</button> -->
+  </form>
+</div>

@@ -1,0 +1,61 @@
+<div class="checkout-container">
+  <div class="shipping-column">
+    <h1>Checkout</h1>
+    <!-- Stepper Placeholder -->
+    <div class="stepper">Address — Shipping — Payment</div>
+
+    <h2>Shipping Information</h2>
+
+    @switch (currentStep) {
+        @case ('address') {
+            <div class="address-list">
+        @for (addr of savedAddresses; track addr.id) {
+        <div
+          class="address-card"
+          [class.selected]="selectedAddressId === addr.id"
+          (click)="selectedAddressId = addr.id">
+          <p><strong>{{addr.name}}</strong></p>
+          <p>{{addr.street}}, {{addr.city}}</p>
+        </div>
+        }
+      </div>
+      <div class="actions-row">
+      <button class="btn-primary" (click)="gotoShipping()">Continue to shipping</button>
+      
+      <!-- Toggle Button with dynamic text -->
+      <button class="btn-secondary" (click)="toggleNewAddressForm()">
+        {{ isAddingNewAddress ? 'Select Saved Address' : 'Add New Address' }}
+      </button>
+    </div>
+        }
+        @case ('addAddress') {
+            <app-address-checkout-component/>
+            <div class="actions-row">
+      <button class="btn-primary" (click)="saveAndShipping()">Save & Continue to shipping</button>
+      
+      <!-- Toggle Button with dynamic text -->
+      <button class="btn-secondary" (click)="chooseAddress()">
+        Select Saved Address
+      </button>
+    </div>
+        }
+        @case ('shipping') {
+            <app-courier-component/>
+        }
+
+    }
+   
+    <!-- Action Buttons Row -->
+    
+  </div>
+
+  <!-- Right Side: Existing Your Cart / Order Summary Components -->
+  <aside class="summary-column">
+    <!-- <div class="items-list">
+@for (item of itemList; track item.id) {
+       <app-cart-item-component [item] = "item"/>
+}
+    </div> -->
+    <app-order-summary-component/>
+  </aside>
+</div>

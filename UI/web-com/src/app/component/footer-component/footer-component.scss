@@ -1,0 +1,55 @@
+.site-footer {
+  background-color: #f4f4f4; // Match light gray background
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+
+  .footer-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+
+  .newsletter-section {
+    flex: 0 1 40%; // Occupies less than half the width
+    h2 { font-size: 2rem; margin-bottom: 10px; }
+    p { margin-bottom: 20px; color: #666; line-height: 1.4; }
+  }
+
+  .email-signup {
+    display: flex;
+    border: 1px solid #333; // Dark border for the combined field
+    input {
+      border: none;
+      padding: 12px;
+      flex-grow: 1;
+      outline: none;
+    }
+    button {
+      background: none;
+      border: none;
+      font-weight: bold;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-left: 1px solid #333;
+    }
+  }
+
+  .links-container {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+  }
+
+  .link-column {
+    h3 { font-size: 1rem; margin-bottom: 15px; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 8px; }
+    a { 
+      text-decoration: none; 
+      color: #555; 
+      font-size: 0.9rem;
+      &:hover { color: #000; }
+    }
+  }
+}

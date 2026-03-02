@@ -1,0 +1,15 @@
+<section class="hero">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+            <mat-expansion-panel-header>
+                <mat-panel-title> Sale </mat-panel-title>
+                <mat-panel-description>
+                    Click to {{panelOpenState() ? 'Lock' : 'Unlock'}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>$20 off $100 or more. Use code:
+                <mat-chip>EPIC20</mat-chip>
+            </p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</section>
