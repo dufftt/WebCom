@@ -1,5 +1,6 @@
 interface AuthResponseDTO{
-    customerID: String,
-    customerName: String,
-    customerEmail: String
+    customerId: String,
+    name: String,
+    customerEmail: String,
+    token: String
 }

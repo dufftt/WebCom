@@ -1,3 +1,11 @@
+@if (cartService.cartItemList()===[]) {
+  <div class="empty-cart-page">
+    <p class="subtitle">Add Something <a routerLink="/productList">Continue Shopping</a></p>
+  </div>
+}@else {
+
+
+
 <div class="cart-page-wrapper">
   <!-- Left Side: Items List -->
   <div class="cart-main">
@@ -7,7 +15,7 @@
     <div class="items-list">
       <!-- Loop through items here -->
       <!-- <app-order-item *ngFor="let i of [1, 2]"></app-order-item> -->
-@for (item of itemList; track item.id) {
+@for (item of productItemLists(); track item.id) {
        <app-cart-item-component [item] = "item"/>
 }
     </div>
@@ -20,3 +28,4 @@
 
   </aside>
 </div>
+}

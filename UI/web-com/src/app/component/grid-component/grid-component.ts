@@ -2,6 +2,7 @@ import { Component, inject, Input, signal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
+import { CartServices } from '../../services/cart-service/cart-services';
 
 @Component({
   selector: 'app-grid-component',
@@ -11,16 +12,21 @@ import { Router } from '@angular/router';
   styleUrl: './grid-component.scss',
 })
 export class GridComponent {
-addToCart() {
-throw new Error('Method not implemented.');
-}
+
   router = inject(Router)
-goToProduct(productId: number) {
+  cartService = inject(CartServices)
+
+  @Input() productList: productItem[] = []
+
+  goToProduct(productId: number) {
   console.log("Card clicked: "+productId)
   this.router.navigate(['/productPage',productId])
 }
 
-  @Input() productList: productItem[] = []
-
+  addToCart(product: productItem, event: Event) {
+  event.stopPropagation();
+  this.cartService.addToCart(product.productId)
+  
+}
 
 }

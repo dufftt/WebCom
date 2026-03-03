@@ -20,11 +20,21 @@
     <span class="example-spacer"></span>
     <div class="nav-items-container">
    <app-search-bar-component (searchEvent)="handleSearch($event)"></app-search-bar-component>
-    <button matButton (click)="goToLogin()">Login</button>
-    <button matButton (click)="goToRegister()">Register</button>
+   @if (this.authService.isLoggedin()) {
 
     <button matIconButton aria-label="Cart" (click)="goToCart()">
         <mat-icon>shopping_cart</mat-icon>
     </button>
+    <button matIconButton aria-label="Logout user" (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+    </button>
+   }
+   @else {
+    <button matButton (click)="goToLogin()">Login</button>
+    <button matButton (click)="goToRegister()">Register</button>
+
+   }
+    
+    
     </div>
 </mat-toolbar>

@@ -1,17 +1,19 @@
 <div class="cart-item">
   <!-- Product Image Placeholder -->
-  <div class="product-image"></div>
+  <div class="product-image">
+    <img [src]="item.imageUrl" alt="{{item.name}}">
+  </div>
 
   <!-- Product Details -->
   <div class="product-info">
     <h3 class="product-name">{{item.name}}</h3>
-    <p class="product-meta">Size: {{item.size}}</p>
+    <!-- <p class="product-meta">Size: L</p> -->
     <p class="product-meta">Quantity: {{item.quantity}}</p>
     <p class="product-price">${{item.price}}</p>
   </div>
 
   <!-- Actions -->
   <div class="product-actions">
-    <button class="remove-btn" (click)="onRemove()">Remove</button>
+    <button class="remove-btn" (click)="onRemove(item.id)">Remove</button>
   </div>
 </div>

@@ -21,6 +21,7 @@ cartItemList = this.#cartItemList.asReadonly();
 
 //as user click on add to cart on each products then it will push the same here and update cartItemList
  addToCart(productId: number){
+  console.log("Cart Service Invoked with product ID: ",productId)
     this.#cartItemList.update(items =>{
       if(items.find(item => item.productId===productId)){
         return items.map(item =>

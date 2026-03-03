@@ -10,7 +10,7 @@
                 <h3 class="price">${{product.productPrice}}</h3>
             </mat-card-content>
             <mat-card-actions>
-                <button matButton="filled" class="btn" (click)="addToCart()">Add to Cart</button>
+                <button matButton="filled" class="btn" (click)="addToCart(product, $event)">Add to Cart</button>
             </mat-card-actions>
         </mat-card>
         }
