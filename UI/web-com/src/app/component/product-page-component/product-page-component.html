@@ -4,7 +4,7 @@
     <div class="main-image">
       <!-- Gray placeholder from your image -->
       <div class="image-placeholder">
-        <img [src]="product?.productImageUrl" alt="{{product?.productName}}">
+        <img [src]="product()?.productImageUrl" alt="{{product()?.productName}}">
       </div>
       <button class="nav-next"><i class="fas fa-chevron-right"></i></button>
     </div>
@@ -12,12 +12,11 @@
 
   <!-- Right Side: Details -->
   <div class="product-info">
-    <h1 class="title">${{product?.productName}}</h1>
-    <p class="price">${{product?.productPrice}}</p>
+    <h1 class="title">{{product()?.productName}}</h1>
+    <p class="price">${{product()?.productPrice}}</p>
     
     <p class="description">
-      Revamp your style with the latest designer trends in men's clothing or achieve 
-      a perfectly curated wardrobe thanks to our line-up of timeless pieces.
+      {{product()?.productDescription}}
     </p>
 
     <div class="selection-controls">
@@ -28,18 +27,18 @@
         <button>+</button>
       </div>
 
-      <!-- Size Selector -->
+      <!-- Size Selector
       <div class="size-dropdown">
         <span>XL</span>
         <i class="fas fa-chevron-down"></i>
       </div>
-    </div>
+    </div> -->
 
-    <p class="model-info">Height of model: 189 cm. / 6' 2" Size 41</p>
+    <!-- <p class="model-info">Height of model: 189 cm. / 6' 2" Size 41</p> -->
 
     <div class="action-buttons">
-      <button class="btn-cart">Add to Cart</button>
-      <button class="btn-buy">Go to Cart</button>
+      <button class="btn-cart" (click)="addToCart(product())">Add to Cart</button>
+      <button class="btn-buy" (click)="goToCart()">Go to Cart</button>
     </div>
   </div>
 </div>

@@ -41,11 +41,24 @@ export class ProductServices {
   }
 //TODO: In backend make sure this api is unprotected
 //Component using this will pass productId and then 
-  getProductByProductId(productId: number): Observable<productItem>{
-     return this.http.get<productItem>(this.#apiUrl+'/getProductById?id='+productId)
+  getProductByProductId(productId: number){
+     this.http.get<productItem>(this.#apiUrl+'/api/getProductById?productId='+productId).subscribe({
+      next: (data) => {
+        this.#productList.update(products => [...products, data]);
+      },
+      error: () => console.error('error occurred')
+    
+
+     })
   }
 getProductByProductIdLocally(productId: number): productItem | undefined {
-  return this.#productList().find(product => product.productId === productId);
+  if(this.#productList().find(product => product.productId === productId)){
+    return this.#productList().find(product => product.productId === productId);
+  }else{
+    this.getProductByProductId(productId)
+    return this.#productList().find(product => product.productId === productId);
+  }
+  
 }
 //TODO: built backend for offset pagination
 //logic for backend that based on page number we will fetch 10 records on offset 

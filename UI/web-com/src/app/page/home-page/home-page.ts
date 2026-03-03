@@ -23,7 +23,7 @@ ngOnInit(): void{
 }
 
 goToProductList() {
-  console.log("clicked product lis");
+  console.log("clicked product list");
 this.router.navigate(['/productList']);
 }
 

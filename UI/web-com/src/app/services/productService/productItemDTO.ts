@@ -2,7 +2,7 @@
 interface productItem{
     productId: number,
     productName: String,
-    productQuantity: number,
+    productDescription: String,
     productPrice: number
-    productImageUrl: []
+    productImageUrl: String[]
 }

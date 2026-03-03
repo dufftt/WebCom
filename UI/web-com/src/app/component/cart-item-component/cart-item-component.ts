@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { CartServices } from '../../services/cart-service/cart-services';
 
 @Component({
   selector: 'app-cart-item-component',
@@ -13,8 +14,15 @@ export class CartItemComponent {
 //   quantity: '1',
 //   price: '99'
 // };
+
+cartService = inject(CartServices)
 @Input() item: any; 
-onRemove(){
+
+
+onRemove(productId: number){
   //TODO
+  console.log(this.item)
+  this.cartService.removeFromCart(productId)
+  
 }
 }
