@@ -13,6 +13,8 @@ export class LoginService {
   #url =environment.apiUrl
   #customerId = signal(localStorage.getItem('customerId') ?? '')
   customerId = this.#customerId.asReadonly();
+  #customerName = signal(localStorage.getItem('name') ?? '')
+  customerName = this.#customerName.asReadonly();
   #isLoggedIn = signal(!!localStorage.getItem('customerId') && !!localStorage.getItem('token'))
   isLoggedin = this.#isLoggedIn.asReadonly();
 

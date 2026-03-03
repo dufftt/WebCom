@@ -3,6 +3,7 @@ import { MatButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { CartServices } from '../../services/cart-service/cart-services';
+import { LoginService } from '../../services/authService/login-service';
 
 @Component({
   selector: 'app-grid-component',
@@ -14,8 +15,9 @@ import { CartServices } from '../../services/cart-service/cart-services';
 export class GridComponent {
 
   router = inject(Router)
+  authService = inject(LoginService)
   cartService = inject(CartServices)
-
+  isLoggedIn = this.authService.isLoggedin
   @Input() productList: productItem[] = []
 
   goToProduct(productId: number) {
@@ -25,6 +27,9 @@ export class GridComponent {
 
   addToCart(product: productItem, event: Event) {
   event.stopPropagation();
+  if(!this.authService.isLoggedin()){
+    this.router.navigate(['/login'])
+  }
   this.cartService.addToCart(product.productId)
   
 }

@@ -10,6 +10,7 @@ export class AddressService {
   http = inject(HttpClient)
   authService = inject(LoginService)
   #addressList = signal<AddressDTO[] | null>(null)
+  addressList = this.#addressList.asReadonly()
   #apiUrl = environment.apiUrl
   #currentSelectedAddress = signal<String>('')
   currentSelectedAddress = this.#currentSelectedAddress.asReadonly();
