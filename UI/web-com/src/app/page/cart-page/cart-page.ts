@@ -19,11 +19,7 @@ productService = inject(ProductServices)
  
 
 gotToCheckout() {
-// this.router.navigate(['/checkout']);
-// console.log(this.cartItemsList);
-console.log(this.productItemLists);
-
-}
+this.router.navigate(['/checkout']);}
 
 // cartItemsList = this.cartService.cartItemList();
 productItemLists = computed(() => this.cartService.cartItemList().map(cartItem => {
@@ -37,42 +33,7 @@ productItemLists = computed(() => this.cartService.cartItemList().map(cartItem =
 
   }
 }))
-// productItemLists = this.cartItemsList.map(cartItem => {
-//   const product = computed(() => this.productService.productList().find(p => p.productId===cartItem.productId));
-//   return {
-//           id: cartItem.productId,
-//           name: product()?.productName,
-//           quantity: cartItem.quantity,
-//           price: product()?.productPrice
-
-//   }
-// })
 
 
-
-itemList =
-[
-  {
-    id: 1,
-    name: "Men's winter jacket",
-  size: 'L',
-  quantity: '12',
-  price: '99'
-  },
-  {
-    id: 2,
-    name: "Women's winter jacket",
-  size: 'M',
-  quantity: '11',
-  price: '49'
-  },
-  {
-    id: 3,
-    name: "Any's winter jacket",
-  size: 'S',
-  quantity: '100',
-  price: '29'
-  },
-]
 
 }

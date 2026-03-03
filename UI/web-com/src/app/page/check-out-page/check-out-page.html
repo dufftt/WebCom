@@ -9,13 +9,13 @@
     @switch (currentStep) {
         @case ('address') {
             <div class="address-list">
-        @for (addr of savedAddresses; track addr.id) {
+        @for (addr of addressList(); track addr.addressId) {
         <div
           class="address-card"
-          [class.selected]="selectedAddressId === addr.id"
-          (click)="selectedAddressId = addr.id">
-          <p><strong>{{addr.name}}</strong></p>
-          <p>{{addr.street}}, {{addr.city}}</p>
+          [class.selected]="selectedAddressId === addr.addressId.toString()"
+          (click)="selectedAddressId = addr.addressId.toString()">
+          <p><strong>{{customerName()}}</strong></p>
+          <p>{{addr.address}}, {{addr.City}}, {{addr.country}}, {{addr.pinCode}}</p>
         </div>
         }
       </div>

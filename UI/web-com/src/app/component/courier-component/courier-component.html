@@ -1,28 +1,17 @@
 <div class="shipping-selector">
-  <!-- Option 1: Selected -->
-  <label class="shipping-card selected">
+  @for (car of carrier; track car.carrierID) {
+  <label class="shipping-card" [class.selected]="selectedCarrier === car" (click)="selectedCarrier = car">
     <div class="checkbox-container">
-      <input type="checkbox" checked>
+      <input type="radio" name="carrier" [checked]="selectedCarrier === car">
       <span class="checkmark"></span>
     </div>
     <div class="shipping-info">
-      <h3>UPS/USPS Surepost</h3>
-      <p>4-7 Business Days</p>
+      <h3>{{ car.carrierName }}</h3>
+      <p>{{ car.days }} Business Days</p>
     </div>
   </label>
-
-  <!-- Option 2: Unselected -->
-  <label class="shipping-card">
-    <div class="checkbox-container">
-      <input type="checkbox">
-      <span class="checkmark"></span>
-    </div>
-    <div class="shipping-info">
-      <h3>UPS Ground Shipping</h3>
-      <p>3-5 Business Days</p>
-    </div>
-  </label>
+  }
 
   <!-- Final Action Button -->
-  <button class="payment-btn">Continue to payment</button>
+  <button class="payment-btn" (click)="continueToPayment()">Continue to payment</button>
 </div>

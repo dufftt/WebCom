@@ -3,6 +3,16 @@
   gap: 60px;
   padding: 60px;
   background-color: #f1f3f5;
+  align-items: flex-start;
+}
+
+.shipping-column {
+  flex: 1;
+}
+
+.summary-column {
+  width: 400px;
+  flex-shrink: 0;
 }
 
 .address-list {

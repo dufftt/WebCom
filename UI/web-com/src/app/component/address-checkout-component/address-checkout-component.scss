@@ -1,9 +1,73 @@
-.continue-btn {
-    flex: 2; // Primary "Continue" is wider
-    background: #000;
-    color: #fff;
-    padding: 18px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
+// A container for the whole address component
+.address-checkout-container {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  margin: 2rem auto; // Center it on the page
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    color: #111827;
   }
+}
+
+// Styles for each form group (label + input)
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-sizing: border-box; // Important for padding and width
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: #000000;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+// For fields on the same line
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+
+  .form-group {
+    flex: 1; // Each group takes equal space
+  }
+}
+
+.continue-btn {
+  width: 100%; // Make it full-width
+  background: #000;
+  color: #fff;
+  padding: 1rem; // Adjusted padding
+  border: none;
+  border-radius: 6px; // Rounded corners
+  font-weight: 600;
+  font-size: 1rem; // Consistent font size
+  cursor: pointer;
+  margin-top: 1rem; // Space above the button
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #333;
+  }
+}

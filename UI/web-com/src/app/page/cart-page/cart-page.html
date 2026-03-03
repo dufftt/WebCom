@@ -1,11 +1,13 @@
-@if (cartService.cartItemList()===[]) {
-  <div class="empty-cart-page">
-    <p class="subtitle">Add Something <a routerLink="/productList">Continue Shopping</a></p>
+@if (productItemLists().length===0) {
+  <div class="empty-cart-container">
+    <i class="fas fa-shopping-basket empty-cart-icon"></i>
+    <h2 class="empty-cart-title">Your cart is empty</h2>
+    <p class="empty-cart-message">Looks like you haven't added anything to your cart yet.</p>
+    <button routerLink="/home" class="empty-cart-button">
+      Start Shopping
+    </button>
   </div>
 }@else {
-
-
-
 <div class="cart-page-wrapper">
   <!-- Left Side: Items List -->
   <div class="cart-main">

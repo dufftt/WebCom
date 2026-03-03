@@ -5,11 +5,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { SearchBarComponent } from '../search-bar-component/search-bar-component';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/authService/login-service';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule,SearchBarComponent],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, SearchBarComponent, MatMenuModule],
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.scss',
 })
@@ -34,7 +35,8 @@ goToLogin() {
 this.router.navigate(['/login']);
 }
 logOut() {
-this.authService.logout()}
+this.authService.logout()
+this.router.navigate(['/home'])}
 
 handleSearch: any;
 
