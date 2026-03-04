@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Hz-hmaSXrFQH6Et1Vc5E" name="Page-1">
-        <mxGraphModel dx="2100" dy="503" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1716" dy="487" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -83,7 +83,7 @@
                 <mxCell id="25" value="Order Service" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="690" y="770" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="Kafka for event driven actions or actions which has tollerance to wait like notifications" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                <mxCell id="26" value="Kafka/Redis&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&amp;nbsp;for event driven actions or actions which has tollerance to wait like notifications&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="600" y="310" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">

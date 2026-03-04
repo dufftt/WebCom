@@ -41,10 +41,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-h2console</artifactId>
 		</dependency>
-		<dependency> 
+		<!-- <dependency> 
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+        </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -66,6 +66,12 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+    <groupId>io.lettuce</groupId>
+    <artifactId>lettuce-core</artifactId>
+    <version>6.7.1.RELEASE</version> <!-- Check for the latest version on Maven Central -->
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -83,7 +89,7 @@
 	</dependencies>
 
 	<dependencyManagement>
-		<dependencies>
+		<!-- <dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
@@ -91,7 +97,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-		</dependencies>
+		</dependencies> -->
 	</dependencyManagement>
 
 	<build>

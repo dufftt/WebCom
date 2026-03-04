@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,11 @@ import com.duft.customer_service.Domain.use_cases.AddAddressUseCase;
 import com.duft.customer_service.Domain.use_cases.AddCustomerUseCase;
 import com.duft.customer_service.Domain.use_cases.DeleteAddressUseCase;
 import com.duft.customer_service.Domain.use_cases.UpdateAddressUseCase;
+import com.duft.customer_service.Utils.RedisConfig.RedisUtil;
 import com.duft.customer_service.Utils.MaperUtils.MapperUtils;
+
+import io.lettuce.core.RedisURI;
+import tools.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/customerservice")
@@ -67,13 +72,35 @@ public class CustomerServiceRestController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Address Not Found");
             }
     }
+    @GetMapping("/getAddress")
+    public ResponseEntity<AddressDTO> getAddress(@RequestParam Integer id){
+            logger.info("Entered GetAddress: with id: ",id);
+            AddressDTO cachedAddress = RedisUtil.getCache("Address-"+id, AddressDTO.class);
+            if(cachedAddress!=null){
+                // AddressDTO addressDTO = MapperUtils.mapCache(cachedAddress, AddressDTO.class);
+                return ResponseEntity.ok(cachedAddress);
+            }else{
+                Address address = updateAddressUseCase.getAddress(id);
+                
+            if(address==null){
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            else{
+                RedisUtil.addCache("Address-"+id, address);
+                AddressDTO addressDTO = MapperUtils.map(address, AddressDTO.class);
+                return ResponseEntity.ok(addressDTO);
+            }
+            }
+            
+        }
 
     @PostMapping("/deleteAddress")
     public ResponseEntity<String> DeleteAddress(@RequestParam Integer id){
             logger.info("Entered Delete Addressapi: "+id);
                 Boolean status = deleteAddressUseCase.execute(id);
             if(status){
-                return ResponseEntity.ok("Address Deleted with ID: "+id+" with Status: "+status);            }
+                RedisUtil.deleteCache("Address-"+id);
+                return ResponseEntity.ok("Address Deleted with ID: "+id+" with Status: "+status);}
             else{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Address Not Found");
             }
