@@ -29,4 +29,10 @@ public class UpdateAddressUseCase {
        
        
     }
+
+
+    public Address getAddress(Integer id) {
+        Address address = addressRepositoryPort.findById(id).orElse(null);
+        return address;
+    }
 }
