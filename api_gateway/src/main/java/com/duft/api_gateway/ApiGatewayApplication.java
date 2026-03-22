@@ -2,10 +2,8 @@ package com.duft.api_gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-@EnableDiscoveryClient
 public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
@@ -13,3 +11,5 @@ public class ApiGatewayApplication {
 	}
 
 }
+
+//gemini chat discuss: https://gemini.google.com/share/d351c002d6c9

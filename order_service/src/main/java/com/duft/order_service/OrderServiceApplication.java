@@ -2,6 +2,7 @@ package com.duft.order_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
 import com.duft.order_service.Adapters.Controller.OrderRestController;
@@ -12,6 +13,7 @@ import com.duft.order_service.Port.OrderRepositoryPort;
 import com.duft.order_service.domain.services.OrderService;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class OrderServiceApplication {
 
 	public static void main(String[] args) {

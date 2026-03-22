@@ -12,6 +12,7 @@ public interface AddressRepositoryPort {
     Address save(Address address);
     Boolean DeleteAddressById(Integer id);
     Address UpdateAddress(Address address);
+    List<Address> getAllAddressessByCustomerId(Integer id);
 
 
 }

@@ -1,5 +1,7 @@
 package com.duft.customer_service.Domain.use_cases;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,5 +36,12 @@ public class UpdateAddressUseCase {
     public Address getAddress(Integer id) {
         Address address = addressRepositoryPort.findById(id).orElse(null);
         return address;
+    }
+
+
+    public List<Address> getAllAddressessByCustomerId(Integer id) {
+        // TODO Auto-generated method stub
+       List<Address> addresses = this.addressRepositoryPort.getAllAddressessByCustomerId(id);
+        return addresses;
     }
 }
