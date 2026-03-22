@@ -1,0 +1,10 @@
+type Customer {
+    customerId: ID,
+    name: String,
+    mobNumber: String,
+    email: String
+}
+
+type Query{
+    getCustomers: Customer
+}
