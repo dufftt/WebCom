@@ -1,7 +1,7 @@
 type Customer {
-    id: ID,
+    customerId: ID,
     name: String,
-    mobNumer: Int,
+    mobNumber: String,
     email: String
 }
 
