@@ -5,24 +5,27 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.duft.customer_service.Domain.Entities.Customer;
-import com.duft.customer_service.Utils.MaperUtils.MapperUtils;
 import com.duft.customer_service.port.out.CustomerRepositoryPort;
+
+import tools.jackson.databind.ObjectMapper;
 
 @Repository
 public class CustomerRepositoryAdapter implements CustomerRepositoryPort {
 
     private final SpringDataCustomerJpaRepository jpa;
+    private final ObjectMapper mapper = new ObjectMapper();
+
 
     public CustomerRepositoryAdapter(SpringDataCustomerJpaRepository jpa) {
         this.jpa = jpa;
     }
     //mapping from customer entity to customer
     private Customer toDomain(CustomerEntity e) {
-        return MapperUtils.map(e, Customer.class);
+        return mapper.convertValue(e, Customer.class);
     }
     //mapping from customer to customer entity
     private CustomerEntity toEntity(Customer c) {
-        return MapperUtils.map(c, CustomerEntity.class);
+        return mapper.convertValue(c, CustomerEntity.class);
     }
 
     @Override

@@ -21,13 +21,15 @@ import com.duft.product_service.Domains.Entities.Product;
 import com.duft.product_service.Domains.Services.ProductInventoryService;
 import com.duft.product_service.Utils.MapperUtils;
 
+import tools.jackson.databind.ObjectMapper;
+
 @RestController
 @RequestMapping("/products")
 public class ProductRestController {
 
     private final ProductInventoryService productInventoryService;
    Logger logger = LoggerFactory.getLogger(ProductRestController.class);
-
+    private final ObjectMapper mapper = new ObjectMapper();
 
    
     public ProductRestController(ProductInventoryService productInventoryService) {
@@ -130,6 +132,10 @@ public class ProductRestController {
           return ResponseEntity.ok(MapperUtils.mapList(productInventoryService.getInventoryByProductId(id), InventoryDTO.class));
      
     }
+     @GetMapping("/getProductPriceByProductID")
+    public ResponseEntity<Integer> getProductPriceByProductID(@RequestParam Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(productInventoryService.getProductPriceByProductId(id));
+    }
     @GetMapping("/getInventoryAvailablewithProductId")
     public ResponseEntity<Boolean> getInventoryAvailablewithProductId(@RequestParam Integer id){
             return ResponseEntity.ok(productInventoryService.getInventoryAvailablewithProductId(id));
@@ -147,9 +153,6 @@ public class ProductRestController {
     public ResponseEntity<List<String>> getLocationByProductId(@RequestParam Integer id){
         return ResponseEntity.status(HttpStatus.OK).body(productInventoryService.getLocationsByProductId(id));
     }
-    @GetMapping("/getProductPriceByProductID")
-    public ResponseEntity<Integer> getProductPriceByProductID(@RequestParam Integer id){
-        return ResponseEntity.status(HttpStatus.OK).body(productInventoryService.getProductPriceByProductId(id));
-    }
+   
 
 }

@@ -2,10 +2,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "EurekaServerApplication",
+            "request": "launch",
+            "mainClass": "com.duft.eureka_server.EurekaServerApplication"
+        },
+        {
+            "type": "java",
             "name": "ApiGatewayApplication",
             "request": "launch",
             "mainClass": "com.duft.api_gateway.ApiGatewayApplication",
-            "projectName": ""
+            "projectName": "api_gateway"
         },
         {
             "type": "java",
