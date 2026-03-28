@@ -2,6 +2,7 @@ package com.duft.customer_service.Utils.RedisConfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import tools.jackson.databind.ObjectMapper;
 
 public class RedisUtil {
@@ -13,7 +14,7 @@ public class RedisUtil {
     public static <T> void addCache(String key, T value){ 
             try {
                 String valueToBeCached = mapper.writeValueAsString(value);
-                RedisConfiguration.getRedisCommands().set(key, valueToBeCached);
+                RedisConfiguration.getRedisCommands().setex(key, 3600,valueToBeCached);
                 logger.info("Redis Cache Updated: Key: {} Value: {}",key,valueToBeCached);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -42,6 +43,14 @@ public class RedisUtil {
                 e.printStackTrace();
             }
             
+    }
+    public static void clearCache(){
+        try{
+            RedisConfiguration.getRedisCommands().flushdb();
+            logger.info("Redis db cleared");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
    
 }

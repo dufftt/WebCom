@@ -12,4 +12,6 @@ public interface OrderItemRepositoryPort {
 
     List<OrderItems> getOrderItemsListByOrderId(Integer orderId);
 
+    OrderItems findById(int orderId);
+
 }

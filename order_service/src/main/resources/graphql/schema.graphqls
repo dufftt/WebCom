@@ -1,0 +1,61 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key","@shareable","@provides","@external"])
+
+
+
+# type OrderDTO @key(fields: "customerId"){
+#     customerId: Int!
+#     status: Boolean
+#     total: Int
+#     created_date: String
+# }
+
+# type OrderItemDTO @key(fields: "orderItemId"){
+#     orderItemId: Int!
+#     orderId: Int!
+#     productId: Int!
+#     quantity: Int!
+#     price: Int!
+# }
+
+input OrderItemRequest {
+    product_id: Int!
+    quantity: Int!
+}
+
+type OrderItemResponseDTO @key(fields:"orderItemId"){
+
+    orderItemId: Int!
+    orderId: Int!
+    productId: Int!
+    quantity: Int!
+    price: Int!
+}
+
+input OrderRequestDTO{
+    customerId: Int!
+     orderItems: [OrderItemRequest]
+
+}
+
+type OrderResponseDTO @key(fields:"OrderId"){
+    OrderId: Int!
+    customerId: Int!
+    status: Boolean
+    total: Int!
+    created_date: String
+    orderItems: [OrderItemResponseDTO]
+}
+
+
+type Query{
+getOrderDetails(orderId: Int): OrderResponseDTO
+getOrderStatus(orderId: Int): Boolean
+
+
+}
+
+type Mutation{
+addToCart(orderRequest: OrderRequestDTO): OrderResponseDTO
+getOrderList(customer_id: Int): [OrderResponseDTO]
+updateOrderStatus(orderId: Int, status: Boolean): Boolean
+}

@@ -72,33 +72,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-graphql</artifactId>
 		</dependency>
-<!-- Source: https://mvnrepository.com/artifact/net.devh/grpc-client-spring-boot-starter -->
-<!-- <dependency>
-    <groupId>net.devh</groupId>
-    <artifactId>grpc-client-spring-boot-starter</artifactId>
-    <version>3.1.0.RELEASE</version>
-    <scope>compile</scope>
-    <exclusions>
-        <exclusion>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-netty-shaded</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
-		<dependency>
-			<groupId>io.grpc</groupId>
-			<artifactId>grpc-netty</artifactId>
-			<version>1.62.2</version>
-		</dependency> -->
-		<dependency>
-			<groupId>org.springframework.grpc</groupId>
-			<artifactId>spring-grpc-spring-boot-starter</artifactId>
-    	<version>0.3.0</version> 
-	</dependency>
-		<dependency>
-        <groupId>io.grpc</groupId>
-        <artifactId>grpc-services</artifactId>
-    </dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -109,6 +82,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+	
 	</dependencies>
 
 	<dependencyManagement>
@@ -120,12 +94,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.springframework.grpc</groupId>
-				<artifactId>spring-grpc-dependencies</artifactId>
-				<version>0.3.0</version> <type>pom</type>
-				<scope>import</scope>
-        </dependency>
 		</dependencies>
 	</dependencyManagement>
 

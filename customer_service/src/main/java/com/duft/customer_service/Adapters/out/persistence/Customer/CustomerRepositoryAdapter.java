@@ -1,7 +1,11 @@
 package com.duft.customer_service.Adapters.out.persistence.Customer;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.duft.customer_service.Domain.Entities.Customer;
@@ -15,7 +19,7 @@ public class CustomerRepositoryAdapter implements CustomerRepositoryPort {
     private final SpringDataCustomerJpaRepository jpa;
     private final ObjectMapper mapper = new ObjectMapper();
 
-
+    Logger logger = LoggerFactory.getLogger(CustomerRepositoryAdapter.class);
     public CustomerRepositoryAdapter(SpringDataCustomerJpaRepository jpa) {
         this.jpa = jpa;
     }
@@ -46,5 +50,23 @@ public class CustomerRepositoryAdapter implements CustomerRepositoryPort {
         CustomerEntity saved = jpa.saveAndFlush(e);
         System.out.println(saved.toString());
         return toDomain(saved);
+    }
+    @Override
+    public List<Customer> saveAll(List<Customer> listOfCustomers) {
+        List<Customer> finalCustomerList = new ArrayList<>();
+        for(Customer customer : listOfCustomers){
+            finalCustomerList.add(this.save(customer));
+        }
+        return finalCustomerList;
+    }
+    @Override
+    public Boolean deleteCustomerById(Integer id) {
+         try {
+            jpa.deleteById(id);
+        } catch (Exception e) {
+            logger.error("Failed to delete: "+e);
+            return false;
+        }
+        return true;
     }
 }

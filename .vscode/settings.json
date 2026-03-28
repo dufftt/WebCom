@@ -2,6 +2,7 @@
     "java.compile.nullAnalysis.mode": "disabled",
     "java.jdt.ls.vmargs": "-Xmx1G -XX:+UseSerialGC",
     "java.autobuild.enabled": false,
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "maven.view": "flat"
 
 }

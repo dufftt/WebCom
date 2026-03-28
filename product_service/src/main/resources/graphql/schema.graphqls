@@ -1,0 +1,62 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key","@shareable","@provides","@external"])
+
+
+type ProductDTO @key(fields: "productId"){
+    productId: Int!
+    productName: String!
+    productDescription: String!
+    price: Int!
+}
+
+type InventoryDTO @key(fields: "inventoryId"){
+    inventoryId: Int!
+    productId: Int!
+    quantity: Int!
+    location: String!
+    lockedQuantities: Int!
+}
+
+type LockOrReleaseInventoryDTO{
+    inventoryId: Int!
+    quantity: Int!
+}
+
+input ProductInput{
+     productId: Int
+    productName: String!
+    productDescription: String!
+    price: Int!
+}
+
+input inventoryInput{
+     inventoryId: Int
+    productId: Int!
+    quantity: Int!
+    location: String!
+    lockedQuantities: Int!
+}
+
+input LockOrReleaseInventoryInput{
+     inventoryId: Int!
+    quantity: Int!
+}
+
+type Query{
+getProductsList: [ProductDTO]
+getInventoryList: [InventoryDTO]
+getInventoryByProductId(id: Int!): [InventoryDTO]
+getProductPriceByProductID(id: Int!): Int
+getInventoryAvailablewithProductId(id: Int!): Boolean
+getLocationByProductId(id: Int!): [String]
+}
+
+type Mutation{
+addProduct(product: ProductInput): String
+addInventory(inventory: inventoryInput): String
+UpdateProduct(product: ProductInput): String
+UpdateInventory(inventory: inventoryInput): String
+DeleteProduct(id: Int): String
+DeleteInventory(id: Int): String
+holdInventory(request: LockOrReleaseInventoryInput): Boolean
+releaseInventory(request: LockOrReleaseInventoryInput): Boolean
+}
