@@ -6,12 +6,13 @@ import org.springframework.stereotype.Repository;
 
 import com.duft.order_service.Port.OrderItemRepositoryPort;
 import com.duft.order_service.domain.entities.OrderItems;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
 public class OrderItemRepositoryAdapter implements OrderItemRepositoryPort {
 
     private OrderItemRepositoryJPA orderItemRepositoryJPA;
-
+    private static final ObjectMapper mapper = new ObjectMapper();
     public OrderItemRepositoryAdapter(OrderItemRepositoryJPA orderItemRepositoryJPA) {
         this.orderItemRepositoryJPA = orderItemRepositoryJPA;
     }
@@ -37,6 +38,12 @@ public class OrderItemRepositoryAdapter implements OrderItemRepositoryPort {
         List<OrderItemEntity> orderItemsList = orderItemRepositoryJPA.findByOrderId(orderId);
         List<OrderItems> finalOrderItemsList = orderItemsList.stream().map(orderItemsEntity -> new OrderItems(orderItemsEntity.getOrderItemId(), orderItemsEntity.getOrderId(), orderItemsEntity.getProductId(), orderItemsEntity.getQuantity(), orderItemsEntity.getPrice())).toList();
         return finalOrderItemsList;
+    }
+
+
+    @Override
+    public OrderItems findById(int orderId) {
+        return mapper.convertValue(orderItemRepositoryJPA.findById(orderId),OrderItems.class);
     }
 
 }

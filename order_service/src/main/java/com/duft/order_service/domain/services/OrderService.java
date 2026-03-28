@@ -70,5 +70,10 @@ public class OrderService {
        orderRepositoryPort.updateOrderStatus(orderId, status);
     }
 
+
+    public OrderItems getOrderItem(int orderId) {
+       return orderItemRepositoryPort.findById(orderId);
+    }
+
     //TODO: /buy /getOrderStatus /updateOrderStatus /getOrderList /getOrderDetails /getTotal
 }
