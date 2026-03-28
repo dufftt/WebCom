@@ -90,17 +90,12 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- below is for redis connection -->
 		<dependency>
     <groupId>io.lettuce</groupId>
     <artifactId>lettuce-core</artifactId>
     <!-- <version>6.7.1.RELEASE</version> Check for the latest version on Maven Central -->
 		</dependency>
-<dependency>
-    <groupId>io.github.resilience4j</groupId>
-    <artifactId>resilience4j-retry</artifactId>
-    <!-- <version>2.3.0</version> -->
-    <scope>compile</scope>
-</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

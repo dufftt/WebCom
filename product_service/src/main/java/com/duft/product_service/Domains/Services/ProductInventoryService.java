@@ -1,11 +1,11 @@
 package com.duft.product_service.Domains.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.duft.product_service.Domains.Entities.Inventory;
 import com.duft.product_service.Domains.Entities.Product;
 import com.duft.product_service.Domains.Use_Cases.AddInventoryUseCase;
@@ -152,4 +152,30 @@ public class ProductInventoryService {
     public Integer getProductPriceByProductId(Integer id){
         return productRepositoryPort.getProductPriceByProductID(id);
     }
+
+    public Product getProduct(Integer productId) {
+        return productRepositoryPort.findById(productId).orElse(null);
+    }
+
+    public Inventory getInventory(Integer inventoryId) {
+        return inventoryRepositoryPort.findById(inventoryId).orElse(null);
+    }
+
+    public List<Product> addAllProduct(List<Product> products) {
+        List<Product> addeProducts = new ArrayList<>();
+        for(Product product: products){
+            addeProducts.add(this.addProductUseCase.execute(product));
+        }
+        return addeProducts;
+    }
+
+    public List<Inventory> addAllInventories(List<Inventory> inventories) {
+        List<Inventory> addedInventories = new ArrayList<>();
+        for(Inventory inventory: inventories){
+            addedInventories.add(this.addInventory(inventory));
+        }
+        return addedInventories;
+    }
+
+
 }

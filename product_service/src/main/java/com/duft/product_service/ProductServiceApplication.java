@@ -2,10 +2,14 @@ package com.duft.product_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.graphql.autoconfigure.GraphQlSourceBuilderCustomizer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.graphql.data.federation.FederationSchemaFactory;
 
-import com.duft.product_service.Adapters.Controllers.ProductRestController;
+import com.duft.product_service.Adapters.out.Controllers.ProductServiceFacade;
+import com.duft.product_service.Adapters.out.Controllers.GraphQlController.ProductGraphQlController;
+import com.duft.product_service.Adapters.out.Controllers.RestController.ProductRestController;
 import com.duft.product_service.Adapters.out.Inventory.InventoryRepositoryAdapter;
 import com.duft.product_service.Adapters.out.Product.ProductRepositoryAdapter;
 import com.duft.product_service.Domains.Services.ProductInventoryService;
@@ -68,9 +72,31 @@ public class ProductServiceApplication {
 				return new ProductInventoryService(addProductUseCase, updateProductUseCase, deleteProductUseCase,
 						addInventoryUseCase, updateInventoryUseCase, deleteInventoryUseCase, productRepositoryPort,inventoryRepositoryPort);
 			}
+
 	@Bean
-	public ProductRestController productRestController(ProductInventoryService productInventoryService){
-		return new ProductRestController(productInventoryService);
+	public ProductServiceFacade productServiceFacade(ProductInventoryService productInventoryService){
+		return new ProductServiceFacade(productInventoryService);
+	}
+
+	@Bean
+	public ProductRestController productRestController(ProductServiceFacade productServiceFacade){
+		return new ProductRestController(productServiceFacade);
+	}
+
+	@Bean
+	public ProductGraphQlController productGraphQlController(ProductServiceFacade productServiceFacade){
+		return new ProductGraphQlController(productServiceFacade);
+	}
+
+		//graphql - apollo federation configuration
+	@Bean
+	public GraphQlSourceBuilderCustomizer customizer(FederationSchemaFactory factory) {
+		return builder -> builder.schemaFactory(factory::createGraphQLSchema);
+	}
+
+	@Bean
+	public FederationSchemaFactory schemaFactory() {
+		return new FederationSchemaFactory();
 	}
 
 }

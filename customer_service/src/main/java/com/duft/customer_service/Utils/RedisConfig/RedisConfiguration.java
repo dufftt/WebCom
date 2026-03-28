@@ -9,7 +9,6 @@ import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisCommands;
-import jakarta.annotation.PreDestroy;
 
 @Configuration
 public class RedisConfiguration {
