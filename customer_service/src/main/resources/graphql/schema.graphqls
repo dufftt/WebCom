@@ -1,0 +1,48 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key","@shareable","@provides","@external"])
+
+type CustomerDTO @key(fields: "customerId"){
+    customerId: Int!
+    name: String!
+    mobNumber: String!
+    email: String!
+}
+type AddressDTO @key(fields: "addressId"){
+    addressId: Int!
+    customerId: Int!
+    address: String
+    city: String
+    state: String
+    country: String
+    pinCode: String
+}
+
+input CustomerInput {
+    customerId: Int
+    name: String!
+    mobNumber: String!
+    email: String!
+}
+
+input AddressInput {
+    addressId: Int
+    customerId: Int!
+    address: String
+    city: String
+    state: String
+    country: String
+    pinCode: String
+}
+
+type Query{
+    getCustomer(id: Int!): CustomerDTO
+    getAddress(id: Int!): AddressDTO
+    getAllAddressessByCustomerId(id: Int!): [AddressDTO]
+}
+
+type Mutation{
+    addCustomer(customer: CustomerInput!): String
+    addAddress(address: AddressInput!): String
+    UpdateAddress(address: AddressInput!): String
+    deleteCustomer(id: Int!): String
+    DeleteAddress(id: Int!): String
+}

@@ -13,6 +13,7 @@ public interface AddressRepositoryPort {
     Boolean DeleteAddressById(Integer id);
     Address UpdateAddress(Address address);
     List<Address> getAllAddressessByCustomerId(Integer id);
+    List<Address> saveAll(List<Address> lifoAddresses);
 
 
 }

@@ -1,5 +1,6 @@
 package com.duft.customer_service.Adapters.out.persistence.Address;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.duft.customer_service.Domain.Entities.Address;
+import com.duft.customer_service.Domain.Entities.Customer;
 import com.duft.customer_service.port.out.AddressRepositoryPort;
 
 import tools.jackson.databind.ObjectMapper;
@@ -86,6 +88,15 @@ public class AddressRepositoryAdapter implements AddressRepositoryPort{
        return addressEntities.stream()
                .map(this::toDomain)
                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Address> saveAll(List<Address> lifoAddresses) {
+            List<Address> finalAddressList = new ArrayList<>();
+        for(Address address : lifoAddresses){
+            finalAddressList.add(this.save(address));
+        }
+        return finalAddressList;
     }
 
 }
