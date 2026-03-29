@@ -1,4 +1,4 @@
-package com.duft.order_service.Adapters.Controller;
+package com.duft.order_service.Adapters.out.Controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,6 +13,8 @@ import com.duft.order_service.Adapters.WebDTO.OrderRequestDTO;
 import com.duft.order_service.Adapters.WebDTO.OrderResponseDTO;
 import com.duft.order_service.domain.entities.Order;
 import com.duft.order_service.domain.entities.OrderItems;
+import com.duft.order_service.domain.exceptions.BadRequestException;
+import com.duft.order_service.domain.exceptions.OrderNotFoundException;
 import com.duft.order_service.domain.services.OrderService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -28,6 +30,9 @@ public class OrderServiceFacade {
     public OrderResponseDTO addToCart(OrderRequestDTO orderRequest){
         //TODO: first we will add this in order & orderItem table after calculating prices etc then pass call to payment service
         // Order order = new Order(null, orderRequest.getCustomer_id(), false, 0, new Date().toString());
+        if(orderRequest==null || !orderRequest.validated()){
+            throw new BadRequestException("Invalid Order Request");
+        }
             Map<Integer,Integer> priceList = new HashMap<Integer,Integer>();
             Integer dummyPrice = 5; //need to overide to update this with actual price fetch from product service
             Integer totalPrice = 0;
@@ -48,7 +53,13 @@ public class OrderServiceFacade {
 
     public List<OrderResponseDTO> getOrderList(Integer customer_id){
         List<Order> orderList = orderService.getOrderList(customer_id);
+        if(orderList==null){
+            throw new OrderNotFoundException("Order not found");
+        }
         List<OrderItems> orderItemsList = orderService.getOrderItemsList(customer_id);
+        if(orderItemsList==null){
+            throw new OrderNotFoundException("Order Item not found");
+        }
         List<OrderResponseDTO> finalOrderList = new ArrayList<>();
         for(Order order : orderList){
             List<OrderItemResponseDTO> finalOrderItemList = new ArrayList<>();
@@ -64,7 +75,13 @@ public class OrderServiceFacade {
 
     public OrderResponseDTO getOrderDetails(Integer orderId){
         Order order = orderService.getOrderDetails(orderId);
+        if(order==null){
+            throw new OrderNotFoundException("Order not found");
+        }
         List<OrderItems> orderItemsList = orderService.getOrderItemsListByOrderID(orderId);
+        if(orderItemsList==null){
+            throw new OrderNotFoundException("Order Item Not found");
+        }
         List<OrderItemResponseDTO> finalOrderItemList = new ArrayList<>();
         for(OrderItems orderItems : orderItemsList){
             finalOrderItemList.add(new OrderItemResponseDTO(orderItems.getOrderItemId(),orderItems.getOrderId(),orderItems.getProductId(),orderItems.getQuantity(),orderItems.getPrice()));
@@ -74,6 +91,9 @@ public class OrderServiceFacade {
 
     public OrderResponseDTO getOrderStatus(Integer orderId){
         Order order = orderService.getOrderDetails(orderId);
+        if(order ==null){
+            throw new OrderNotFoundException("Order not found");
+        }
         return new OrderResponseDTO(order.getOrderId(),order.getCustomerId(),order.getStatus(),order.getTotal(),order.getCreated_date(),null);
     }
 

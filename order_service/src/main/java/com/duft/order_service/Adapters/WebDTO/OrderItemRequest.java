@@ -31,6 +31,12 @@ public class OrderItemRequest {
     public String toString() {
         return "OrderItemRequest [product_id=" + product_id + ", quantity=" + quantity + "]";
     }
+    public boolean validated() {
+        if(this.getProduct_id()!=null && this.getQuantity()>0){
+            return true;
+        }
+        return false;
+    }
 
     
 

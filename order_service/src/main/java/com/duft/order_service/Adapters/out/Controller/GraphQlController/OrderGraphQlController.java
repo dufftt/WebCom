@@ -1,4 +1,4 @@
-package com.duft.order_service.Adapters.Controller.GraphQlController;
+package com.duft.order_service.Adapters.out.Controller.GraphQlController;
 
 import java.util.List;
 
@@ -6,12 +6,14 @@ import org.springframework.graphql.data.federation.EntityMapping;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
+import org.springframework.stereotype.Controller;
 
-import com.duft.order_service.Adapters.Controller.OrderServiceFacade;
 import com.duft.order_service.Adapters.WebDTO.OrderItemResponseDTO;
 import com.duft.order_service.Adapters.WebDTO.OrderRequestDTO;
 import com.duft.order_service.Adapters.WebDTO.OrderResponseDTO;
+import com.duft.order_service.Adapters.out.Controller.OrderServiceFacade;
 
+@Controller
 public class OrderGraphQlController {
 
      private OrderServiceFacade orderServiceFacade;
@@ -47,12 +49,12 @@ public class OrderGraphQlController {
         return orderServiceFacade.updateOrderStatus(orderId, status);
     }
     @EntityMapping
-    public OrderResponseDTO orderResponseDTO(int OrderId){
-        return orderServiceFacade.getOrderDetails(OrderId);
+    public OrderResponseDTO orderResponseDTO(@Argument Integer orderId){
+        return orderServiceFacade.getOrderDetails(orderId);
     }
     @EntityMapping
-    public OrderItemResponseDTO orderItemResponseDTO(int OrderId){
-        return orderServiceFacade.getOrderItemResponse(OrderId);
+    public OrderItemResponseDTO orderItemResponseDTO(@Argument Integer orderId){
+        return orderServiceFacade.getOrderItemResponse(orderId);
     }
 
 }

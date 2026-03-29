@@ -49,13 +49,13 @@ type OrderResponseDTO @key(fields:"OrderId"){
 
 type Query{
 getOrderDetails(orderId: Int): OrderResponseDTO
-getOrderStatus(orderId: Int): Boolean
+getOrderStatus(orderId: Int): OrderResponseDTO
+getOrderList(customer_id: Int): [OrderResponseDTO]
 
 
 }
 
 type Mutation{
 addToCart(orderRequest: OrderRequestDTO): OrderResponseDTO
-getOrderList(customer_id: Int): [OrderResponseDTO]
 updateOrderStatus(orderId: Int, status: Boolean): Boolean
 }

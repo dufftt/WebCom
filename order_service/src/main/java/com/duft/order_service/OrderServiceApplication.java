@@ -7,11 +7,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.graphql.data.federation.FederationSchemaFactory;
 
-import com.duft.order_service.Adapters.Controller.OrderServiceFacade;
-import com.duft.order_service.Adapters.Controller.GraphQlController.OrderGraphQlController;
-import com.duft.order_service.Adapters.Controller.RestController.OrderRestController;
-import com.duft.order_service.Adapters.out.Order.OrderRepositoryAdapter;
-import com.duft.order_service.Adapters.out.OrderItem.OrderItemRepositoryAdapter;
+import com.duft.order_service.Adapters.out.Controller.OrderServiceFacade;
+import com.duft.order_service.Adapters.out.Controller.GraphQlController.OrderGraphQlController;
+import com.duft.order_service.Adapters.out.Controller.RestController.OrderRestController;
+import com.duft.order_service.Adapters.out.persistence.Order.OrderRepositoryAdapter;
+import com.duft.order_service.Adapters.out.persistence.OrderItem.OrderItemRepositoryAdapter;
 import com.duft.order_service.Port.OrderItemRepositoryPort;
 import com.duft.order_service.Port.OrderRepositoryPort;
 import com.duft.order_service.domain.services.OrderService;

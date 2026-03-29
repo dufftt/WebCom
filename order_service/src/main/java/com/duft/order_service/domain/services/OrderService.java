@@ -75,5 +75,23 @@ public class OrderService {
        return orderItemRepositoryPort.findById(orderId);
     }
 
+
+    public List<Order> addAllOrders(List<Order> orderList) {
+        List<Order> addedOrders = new ArrayList<>();
+        for(Order order: orderList){
+           addedOrders.add(this.addOrder(order));
+        }
+        return addedOrders;
+    }
+
+
+    public List<OrderItems> addAllOrderItems(List<OrderItems> orderItemList) {
+       List<OrderItems> addOrderItems = new ArrayList<>();
+       for(OrderItems orderItems: orderItemList){
+        addOrderItems.add(this.addOrderItems(orderItems));
+       }
+       return addOrderItems;
+    }
+
     //TODO: /buy /getOrderStatus /updateOrderStatus /getOrderList /getOrderDetails /getTotal
 }

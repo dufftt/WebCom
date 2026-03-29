@@ -1,4 +1,4 @@
-package com.duft.order_service.Adapters.out.Order;
+package com.duft.order_service.Adapters.out.persistence.Order;
 
 import java.util.List;
 

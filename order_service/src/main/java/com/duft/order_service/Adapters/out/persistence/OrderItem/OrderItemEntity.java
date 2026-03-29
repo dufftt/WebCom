@@ -1,4 +1,4 @@
-package com.duft.order_service.Adapters.out.OrderItem;
+package com.duft.order_service.Adapters.out.persistence.OrderItem;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
