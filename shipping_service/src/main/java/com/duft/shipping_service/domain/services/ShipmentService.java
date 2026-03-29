@@ -1,7 +1,11 @@
 package com.duft.shipping_service.domain.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
+
+import org.apache.commons.lang.math.RandomUtils;
 
 import com.duft.shipping_service.Adapters.WebDTO.UpdateStatusDTO;
 import com.duft.shipping_service.domain.entities.Shipments;
@@ -48,8 +52,9 @@ public class ShipmentService {
 
 private Integer decideCarrier(){
     //TODO: based on current availablity of carrier partner need to decide carrier partner
-
-    return Carriers.BLUE_DART.getId();
+    Random rad = new Random();
+    int carrier = rad.nextInt(0, 6);
+    return carrier;
 }
 
 public List<Shipments> getAllShipments() {
@@ -73,6 +78,14 @@ public Boolean updateShipmentStatus(List<UpdateStatusDTO> updateStatusDTO) {
 public Integer calculateShippingCost(Integer addressId, String carrier) {
     
     return 0;
+}
+
+public List<Shipments> addAllShipments(List<Shipments> listOfShipment) {
+        List<Shipments> addedShipments = new ArrayList<>();
+        for(Shipments shipments: listOfShipment){
+            addedShipments.add(this.addShipment(shipments));
+        }
+        return addedShipments;
 }
 
 

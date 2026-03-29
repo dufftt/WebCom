@@ -1,4 +1,4 @@
-package com.duft.shipping_service.Adapters.out.Shipment;
+package com.duft.shipping_service.Adapters.out.persistence.Shipment;
 
 import java.util.List;
 

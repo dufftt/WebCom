@@ -1,4 +1,4 @@
-package com.duft.shipping_service.Adapters.out.Shipment;
+package com.duft.shipping_service.Adapters.out.persistence.Shipment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
