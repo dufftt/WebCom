@@ -2,6 +2,8 @@ package com.duft.order_service.Adapters.WebDTO;
 
 import java.util.List;
 
+import org.springframework.asm.Type;
+
 public class OrderRequestDTO {
 
     private Integer customerId;
@@ -34,6 +36,18 @@ public class OrderRequestDTO {
     @Override
     public String toString() {
         return "OrderRequestDTO [customer_id=" + customerId + ", orderItems=" + orderItems + "]";
+    }
+
+    public boolean validated() {
+       if(this.getCustomerId()!=null){
+        for(OrderItemRequest orderItemRequest: this.getOrderItems()){
+            if(!orderItemRequest.validated()){
+                return false;
+            }
+        }
+        return true;
+       }
+       return false;
     }
 
     

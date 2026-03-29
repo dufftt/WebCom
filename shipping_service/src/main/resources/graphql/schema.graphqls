@@ -1,0 +1,32 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.3", import: ["@key","@shareable","@provides","@external"])
+
+type ShipmentResponseDTO{
+    orderId: Int
+    customer_id: Int
+    address_id: Int
+    carrier: Int
+    status: Boolean
+    trackId: String
+    deliveryCost: Int
+}
+
+input ShipmentRequestDTO{
+    customerId: Int!
+    addressId: Int!
+    orderId: Int!
+    carrier: String!
+}
+input UpdateStatusDTO{
+    shipmentId: Int!
+    status: Boolean!
+}
+
+type Query{
+getAllShipments: [ShipmentResponseDTO]
+trackShipment(trackId: String): ShipmentResponseDTO
+}
+
+type Mutation{
+    startShipping(shipmentRequestDTO: ShipmentRequestDTO): ShipmentResponseDTO
+    updateShipmentStatus(updateStatusDTO: [UpdateStatusDTO]): Boolean
+}

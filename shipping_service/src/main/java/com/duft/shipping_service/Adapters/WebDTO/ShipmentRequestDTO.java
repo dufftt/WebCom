@@ -5,13 +5,13 @@ public class ShipmentRequestDTO {
     private Integer addressId;
     private Integer orderId;
     private String carrier;
-    public ShipmentRequestDTO(Integer customerId, Integer addressId, Integer orderId) {
+    
+    public ShipmentRequestDTO(Integer customerId, Integer addressId, Integer orderId, String carrier) {
         this.customerId = customerId;
         this.addressId = addressId;
         this.orderId = orderId;
+        this.carrier = carrier;
     }
-
-    
     public ShipmentRequestDTO() {
     }
     public Integer getCustomerId() {
@@ -32,11 +32,24 @@ public class ShipmentRequestDTO {
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
+     public String getCarrier() {
+        return carrier;
+    }
+    public void setCarrier(String carrier) {
+        this.carrier = carrier;
+    }
     @Override
     public String toString() {
         return "ShipmentRequestDTO [customerId=" + customerId + ", addressId=" + addressId + ", orderId=" + orderId
-                + "]";
+                + ", carrier=" + carrier + "]";
     }
+    public boolean validated() {
+        if(this.getAddressId()!=null && this.getCustomerId()!=null && this.getOrderId()!=null){
+            return true;
+        }
+        return false;
+    }
+   
 
     
 
