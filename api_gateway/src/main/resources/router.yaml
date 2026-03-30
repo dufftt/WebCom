@@ -1,3 +1,5 @@
 supergraph:
-  # Enable introspection for development
+  file: ./supergraph.graphql
+server:
+  listen_addr: 0.0.0.0:4000
   introspection: true

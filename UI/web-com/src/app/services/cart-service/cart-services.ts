@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginService } from '../authService/login-service';
+import { ApiService } from '../../shared/service/APIService';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class CartServices {
   
 private http = inject(HttpClient);
 private authService = inject(LoginService);
-
+private apiService = inject(ApiService);
 #cartItemList = signal<cartItemDTO[]>([])
 #apiUrl = ''
 #orderResponse = signal<OrderResponseDTO | null>(null);
@@ -44,6 +45,11 @@ cartItemList = this.#cartItemList.asReadonly();
     }
     this.http.post<OrderResponseDTO>(this.#apiUrl+'/getAllProducts',cartRequest).subscribe({
       next: (data) => {
+    // this.apiService.request<OrderResponseDTO>({
+    //       mode: 'GRAPHQL', // Flip this to 'REST' or 'GRAPHQL' to instantly switch transports
+    //       rest: { url: '/api/getProducts', method: 'GET' },
+    //       graphql: { query: getProductsList, extractKey: 'getProductsList' }
+    //     }).subscribe({
         this.#orderResponse.set(data)
       },
       error: () => console.error('error occurred')

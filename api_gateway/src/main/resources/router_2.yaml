@@ -1,0 +1,9 @@
+headers:
+  all:
+    request:
+      - propagate:
+          named: "X-User-Id"
+supergraph:
+  introspection: true
+cors:
+  allow_any_origin: true
