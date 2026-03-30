@@ -43,17 +43,18 @@ cartItemList = this.#cartItemList.asReadonly();
       customerId: this.authService.customerId(),
       orderItems: this.#cartItemList()
     }
-    this.http.post<OrderResponseDTO>(this.#apiUrl+'/getAllProducts',cartRequest).subscribe({
+
+    this.apiService.request<OrderResponseDTO>({
+      mode: 'GRAPHQL', // Flip this to 'REST' or 'GRAPHQL' to instantly switch transports
+      rest: { url: '/api/addToCart', method: 'POST', body: cartRequest },
+      // Note: Make sure to import your actual addToCart mutation document in this file!
+      graphql: { query: {} as any /* YOUR_ADD_TO_CART_MUTATION */, variables: { request: cartRequest }, extractKey: 'addToCart', isMutation: true }
+    }).subscribe({
       next: (data) => {
-    // this.apiService.request<OrderResponseDTO>({
-    //       mode: 'GRAPHQL', // Flip this to 'REST' or 'GRAPHQL' to instantly switch transports
-    //       rest: { url: '/api/getProducts', method: 'GET' },
-    //       graphql: { query: getProductsList, extractKey: 'getProductsList' }
-    //     }).subscribe({
-        this.#orderResponse.set(data)
+        this.#orderResponse.set(data);
       },
-      error: () => console.error('error occurred')
-    })
+      error: (err) => console.error('error occurred', err)
+    });
 
  }
 

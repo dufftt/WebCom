@@ -18,6 +18,7 @@ export interface ApiRequestConfig<T> {
     query: DocumentNode;
     variables?: any;
     extractKey: string; // The property key to extract from result.data (e.g., 'getProductsList')
+    isMutation?: boolean; // Set to true if executing a GraphQL mutation
   };
 }
 
@@ -36,11 +37,18 @@ export class ApiService {
     const mode = config.mode || this.defaultMode;
 
     if (mode === 'GRAPHQL' && config.graphql) {
-      // Using .query() instead of .watchQuery() to mimic standard REST one-time fetching behavior
-      return this.#apollo.query<any>({
-        query: config.graphql.query,
-        variables: config.graphql.variables
-      }).pipe(map(result => result.data[config.graphql!.extractKey] as T));
+      if (config.graphql.isMutation) {
+        return this.#apollo.mutate<any>({
+          mutation: config.graphql.query, // Apollo uses 'mutation' key here
+          variables: config.graphql.variables
+        }).pipe(map(result => result.data?.[config.graphql!.extractKey] as T));
+      } else {
+        // Using .query() instead of .watchQuery() to mimic standard REST one-time fetching behavior
+        return this.#apollo.query<any>({
+          query: config.graphql.query,
+          variables: config.graphql.variables
+        }).pipe(map(result => result.data[config.graphql!.extractKey] as T));
+      }
     }
 
     if (mode === 'REST' && config.rest) {
