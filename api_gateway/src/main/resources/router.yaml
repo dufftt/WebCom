@@ -1,5 +1,3 @@
-headers:
-  all:
-    request:
-      - propagate:
-          named: "X-User-Id"
+supergraph:
+  # Enable introspection for development
+  introspection: true

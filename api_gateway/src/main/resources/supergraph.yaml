@@ -1,4 +1,4 @@
-federation_version: =2.3
+federation_version: "=2.3.0"
 subgraphs:
   customer_service:
     routing_url: http://localhost:8765/customer/graphql
@@ -7,7 +7,7 @@ subgraphs:
   product_service:
     routing_url: http://localhost:8765/product/graphql
     schema:
-      subgraph_url: http://localhost:8084/graphql
+      subgraph_url: http://localhost:8083/graphql
   order_service:
     routing_url: http://localhost:8765/order/graphql
     schema:
@@ -15,4 +15,4 @@ subgraphs:
   shipping_service:
     routing_url: http://localhost:8765/shipping/graphql
     schema:
-      subgraph_url: http://localhost:8085/graphql
+      subgraph_url: http://localhost:8084/graphql

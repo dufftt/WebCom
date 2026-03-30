@@ -1,0 +1,263 @@
+schema
+  @link(url: "https://specs.apollo.dev/link/v1.0")
+  @link(url: "https://specs.apollo.dev/join/v0.3", for: EXECUTION)
+{
+  query: Query
+  mutation: Mutation
+}
+
+directive @join__enumValue(graph: join__Graph!) repeatable on ENUM_VALUE
+
+directive @join__field(graph: join__Graph, requires: join__FieldSet, provides: join__FieldSet, type: String, external: Boolean, override: String, usedOverridden: Boolean) repeatable on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+directive @join__implements(graph: join__Graph!, interface: String!) repeatable on OBJECT | INTERFACE
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet, extension: Boolean! = false, resolvable: Boolean! = true, isInterfaceObject: Boolean! = false) repeatable on OBJECT | INTERFACE | UNION | ENUM | INPUT_OBJECT | SCALAR
+
+directive @join__unionMember(graph: join__Graph!, member: String!) repeatable on UNION
+
+directive @link(url: String, as: String, for: link__Purpose, import: [link__Import]) repeatable on SCHEMA
+
+type AddressDTO
+  @join__type(graph: CUSTOMER_SERVICE, key: "addressId", resolvable: true)
+{
+  address: String
+  addressId: Int!
+  city: String
+  country: String
+  customerId: Int!
+  pinCode: String
+  state: String
+}
+
+input AddressInput
+  @join__type(graph: CUSTOMER_SERVICE)
+{
+  address: String
+  addressId: Int
+  city: String
+  country: String
+  customerId: Int!
+  pinCode: String
+  state: String
+}
+
+type CustomerDTO
+  @join__type(graph: CUSTOMER_SERVICE, key: "customerId", resolvable: true)
+{
+  customerId: Int!
+  email: String!
+  mobNumber: String!
+  name: String!
+}
+
+input CustomerInput
+  @join__type(graph: CUSTOMER_SERVICE)
+{
+  customerId: Int
+  email: String!
+  mobNumber: String!
+  name: String!
+}
+
+type InventoryDTO
+  @join__type(graph: PRODUCT_SERVICE, key: "inventoryId", resolvable: true)
+{
+  inventoryId: Int!
+  location: String!
+  lockedQuantities: Int!
+  productId: Int!
+  quantity: Int!
+}
+
+input inventoryInput
+  @join__type(graph: PRODUCT_SERVICE)
+{
+  inventoryId: Int
+  location: String!
+  lockedQuantities: Int!
+  productId: Int!
+  quantity: Int!
+}
+
+scalar join__FieldSet
+
+enum join__Graph {
+  CUSTOMER_SERVICE @join__graph(name: "customer_service", url: "http://localhost:8765/customer/graphql")
+  ORDER_SERVICE @join__graph(name: "order_service", url: "http://localhost:8765/order/graphql")
+  PRODUCT_SERVICE @join__graph(name: "product_service", url: "http://localhost:8765/product/graphql")
+  SHIPPING_SERVICE @join__graph(name: "shipping_service", url: "http://localhost:8765/shipping/graphql")
+}
+
+scalar link__Import
+
+enum link__Purpose {
+  """
+  `SECURITY` features provide metadata necessary to securely resolve fields.
+  """
+  SECURITY
+
+  """
+  `EXECUTION` features provide metadata necessary for operation execution.
+  """
+  EXECUTION
+}
+
+type LockOrReleaseInventoryDTO
+  @join__type(graph: PRODUCT_SERVICE)
+{
+  inventoryId: Int!
+  quantity: Int!
+}
+
+input LockOrReleaseInventoryInput
+  @join__type(graph: PRODUCT_SERVICE)
+{
+  inventoryId: Int!
+  quantity: Int!
+}
+
+type Mutation
+  @join__type(graph: CUSTOMER_SERVICE)
+  @join__type(graph: ORDER_SERVICE)
+  @join__type(graph: PRODUCT_SERVICE)
+  @join__type(graph: SHIPPING_SERVICE)
+{
+  DeleteAddress(id: Int!): String @join__field(graph: CUSTOMER_SERVICE)
+  UpdateAddress(address: AddressInput!): String @join__field(graph: CUSTOMER_SERVICE)
+  addAddress(address: AddressInput!): String @join__field(graph: CUSTOMER_SERVICE)
+  addCustomer(customer: CustomerInput!): String @join__field(graph: CUSTOMER_SERVICE)
+  deleteCustomer(id: Int!): String @join__field(graph: CUSTOMER_SERVICE)
+  addToCart(orderRequest: OrderRequestDTO): OrderResponseDTO @join__field(graph: ORDER_SERVICE)
+  updateOrderStatus(orderId: Int, status: Boolean): Boolean @join__field(graph: ORDER_SERVICE)
+  DeleteInventory(id: Int): String @join__field(graph: PRODUCT_SERVICE)
+  DeleteProduct(id: Int): String @join__field(graph: PRODUCT_SERVICE)
+  UpdateInventory(inventory: inventoryInput): String @join__field(graph: PRODUCT_SERVICE)
+  UpdateProduct(product: ProductInput): String @join__field(graph: PRODUCT_SERVICE)
+  addInventory(inventory: inventoryInput): String @join__field(graph: PRODUCT_SERVICE)
+  addProduct(product: ProductInput): String @join__field(graph: PRODUCT_SERVICE)
+  holdInventory(request: LockOrReleaseInventoryInput): Boolean @join__field(graph: PRODUCT_SERVICE)
+  releaseInventory(request: LockOrReleaseInventoryInput): Boolean @join__field(graph: PRODUCT_SERVICE)
+  startShipping(shipmentRequestDTO: ShipmentRequestDTO): ShipmentResponseDTO @join__field(graph: SHIPPING_SERVICE)
+  updateShipmentStatus(updateStatusDTO: [UpdateStatusDTO]): Boolean @join__field(graph: SHIPPING_SERVICE)
+}
+
+"""
+type OrderDTO @key(fields: "customerId"){
+    customerId: Int!
+    status: Boolean
+    total: Int
+    created_date: String
+}
+type OrderItemDTO @key(fields: "orderItemId"){
+    orderItemId: Int!
+    orderId: Int!
+    productId: Int!
+    quantity: Int!
+    price: Int!
+}
+"""
+input OrderItemRequest
+  @join__type(graph: ORDER_SERVICE)
+{
+  product_id: Int!
+  quantity: Int!
+}
+
+type OrderItemResponseDTO
+  @join__type(graph: ORDER_SERVICE, key: "orderItemId", resolvable: true)
+{
+  orderId: Int!
+  orderItemId: Int!
+  price: Int!
+  productId: Int!
+  quantity: Int!
+}
+
+input OrderRequestDTO
+  @join__type(graph: ORDER_SERVICE)
+{
+  customerId: Int!
+  orderItems: [OrderItemRequest]
+}
+
+type OrderResponseDTO
+  @join__type(graph: ORDER_SERVICE, key: "OrderId", resolvable: true)
+{
+  OrderId: Int!
+  created_date: String
+  customerId: Int!
+  orderItems: [OrderItemResponseDTO]
+  status: Boolean
+  total: Int!
+}
+
+type ProductDTO
+  @join__type(graph: PRODUCT_SERVICE, key: "productId", resolvable: true)
+{
+  price: Int!
+  productDescription: String!
+  productId: Int!
+  productName: String!
+}
+
+input ProductInput
+  @join__type(graph: PRODUCT_SERVICE)
+{
+  price: Int!
+  productDescription: String!
+  productId: Int
+  productName: String!
+}
+
+type Query
+  @join__type(graph: CUSTOMER_SERVICE)
+  @join__type(graph: ORDER_SERVICE)
+  @join__type(graph: PRODUCT_SERVICE)
+  @join__type(graph: SHIPPING_SERVICE)
+{
+  getAddress(id: Int!): AddressDTO @join__field(graph: CUSTOMER_SERVICE)
+  getAllAddressessByCustomerId(id: Int!): [AddressDTO] @join__field(graph: CUSTOMER_SERVICE)
+  getCustomer(id: Int!): CustomerDTO @join__field(graph: CUSTOMER_SERVICE)
+  getOrderDetails(orderId: Int): OrderResponseDTO @join__field(graph: ORDER_SERVICE)
+  getOrderList(customer_id: Int): [OrderResponseDTO] @join__field(graph: ORDER_SERVICE)
+  getOrderStatus(orderId: Int): OrderResponseDTO @join__field(graph: ORDER_SERVICE)
+  getInventoryAvailablewithProductId(id: Int!): Boolean @join__field(graph: PRODUCT_SERVICE)
+  getInventoryByProductId(id: Int!): [InventoryDTO] @join__field(graph: PRODUCT_SERVICE)
+  getInventoryList: [InventoryDTO] @join__field(graph: PRODUCT_SERVICE)
+  getLocationByProductId(id: Int!): [String] @join__field(graph: PRODUCT_SERVICE)
+  getProductPriceByProductID(id: Int!): Int @join__field(graph: PRODUCT_SERVICE)
+  getProductsList: [ProductDTO] @join__field(graph: PRODUCT_SERVICE)
+  getAllShipments: [ShipmentResponseDTO] @join__field(graph: SHIPPING_SERVICE)
+  trackShipment(trackId: String): ShipmentResponseDTO @join__field(graph: SHIPPING_SERVICE)
+}
+
+input ShipmentRequestDTO
+  @join__type(graph: SHIPPING_SERVICE)
+{
+  addressId: Int!
+  carrier: String!
+  customerId: Int!
+  orderId: Int!
+}
+
+type ShipmentResponseDTO
+  @join__type(graph: SHIPPING_SERVICE)
+{
+  address_id: Int
+  carrier: Int
+  customer_id: Int
+  deliveryCost: Int
+  orderId: Int
+  status: Boolean
+  trackId: String
+}
+
+input UpdateStatusDTO
+  @join__type(graph: SHIPPING_SERVICE)
+{
+  shipmentId: Int!
+  status: Boolean!
+}
