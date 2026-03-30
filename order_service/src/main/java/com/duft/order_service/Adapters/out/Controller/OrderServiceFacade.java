@@ -1,6 +1,7 @@
 package com.duft.order_service.Adapters.out.Controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -56,21 +57,29 @@ public class OrderServiceFacade {
         if(orderList==null){
             throw new OrderNotFoundException("Order not found");
         }
-        List<OrderItems> orderItemsList = orderService.getOrderItemsList(customer_id);
-        if(orderItemsList==null){
+        List<OrderItems> allItemsForCustomer = orderService.getOrderItemsList(customer_id);
+        if(allItemsForCustomer==null){
             throw new OrderNotFoundException("Order Item not found");
         }
-        List<OrderResponseDTO> finalOrderList = new ArrayList<>();
-        for(Order order : orderList){
-            List<OrderItemResponseDTO> finalOrderItemList = new ArrayList<>();
-            for(OrderItems orderItems : orderItemsList){
-                if(order.getOrderId() == orderItems.getOrderId()){
-                    finalOrderItemList.add(new OrderItemResponseDTO(orderItems.getOrderItemId(),order.getOrderId(),orderItems.getProductId(),orderItems.getQuantity(),orderItems.getPrice()));
-                }
-            }
-            finalOrderList.add(new OrderResponseDTO(order.getOrderId(),order.getCustomerId(),order.getStatus(),order.getTotal(),order.getCreated_date(),finalOrderItemList));
-        }
-        return finalOrderList;
+
+        // Group all items by their orderId for efficient O(1) lookup.
+        Map<Integer, List<OrderItemResponseDTO>> itemsByOrderId = allItemsForCustomer.stream()
+                .collect(Collectors.groupingBy(
+                        OrderItems::getOrderId,
+                        Collectors.mapping(
+                                item -> new OrderItemResponseDTO(item.getOrderItemId(), item.getOrderId(), item.getProductId(), item.getQuantity(), item.getPrice()),
+                                Collectors.toList()
+                        )
+                ));
+
+        // Now, map each order to its DTO, fetching its items from the map.
+        return orderList.stream()
+                .map(order -> new OrderResponseDTO(
+                        order.getOrderId(), order.getCustomerId(), order.getStatus(), order.getTotal(), order.getCreated_date(),
+                        itemsByOrderId.getOrDefault(order.getOrderId(), Collections.emptyList())
+                ))
+                .collect(Collectors.toList());
+   
     }
 
     public OrderResponseDTO getOrderDetails(Integer orderId){

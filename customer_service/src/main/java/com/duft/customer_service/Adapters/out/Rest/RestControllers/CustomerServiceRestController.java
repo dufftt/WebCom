@@ -17,7 +17,6 @@ import com.duft.customer_service.Utils.RedisConfig.RedisUtil;
 
 
 @RestController
-@RequestMapping("/customerservice")
 public class CustomerServiceRestController {
 
     private final CustomerFacade customerFacade;

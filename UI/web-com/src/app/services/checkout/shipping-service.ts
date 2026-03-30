@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment.development';
 import { CartServices } from '../cart-service/cart-services';
 import { LoginService } from '../authService/login-service';
 import { AddressService } from './address-service';
+import { ApiService } from '../../shared/service/APIService';
+import { startShipping } from '../../shared/service/graphQLService/queries';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +16,7 @@ export class ShippingService {
   private cartService = inject(CartServices)
   private authService = inject(LoginService)
   private addressService = inject(AddressService)
+  private apiService = inject(ApiService)
   #apiUrl = environment.apiUrl
 
 
@@ -29,7 +32,17 @@ export class ShippingService {
       carrier: Carriers.Bluedart.toString()
     }
 
-   return this.http.post(this.#apiUrl,shippingRequest)
+  //  return this.http.post(this.#apiUrl,shippingRequest)
+  this.apiService.request<String>({
+            mode: 'GRAPHQL', // Flip this to 'REST' or 'GRAPHQL' to instantly switch transports
+            rest: { url: '/api/startShipping', method: 'POST', body: shippingRequest },
+            // Note: Make sure to import your actual addToCart mutation document in this file!
+            graphql: { query: startShipping , variables: { request: shippingRequest }, extractKey: 'startShipping', isMutation: true }
+          }).subscribe({
+            next: (data) => {
+                console.log(data)
+            }
+          })
   }
 
   

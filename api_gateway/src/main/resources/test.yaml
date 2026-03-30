@@ -1,0 +1,6 @@
+federation_version: 2.3
+subgraphs:
+  customer_service:
+    routing_url: http://localhost:8765/customer/graphql
+    schema:
+      subgraph_url: http://localhost:8081/graphql

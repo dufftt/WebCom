@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginService } from '../authService/login-service';
+import { ApiService } from '../../shared/service/APIService';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class CartServices {
   
 private http = inject(HttpClient);
 private authService = inject(LoginService);
-
+private apiService = inject(ApiService);
 #cartItemList = signal<cartItemDTO[]>([])
 #apiUrl = ''
 #orderResponse = signal<OrderResponseDTO | null>(null);
@@ -42,12 +43,18 @@ cartItemList = this.#cartItemList.asReadonly();
       customerId: this.authService.customerId(),
       orderItems: this.#cartItemList()
     }
-    this.http.post<OrderResponseDTO>(this.#apiUrl+'/getAllProducts',cartRequest).subscribe({
+
+    this.apiService.request<OrderResponseDTO>({
+      mode: 'GRAPHQL', // Flip this to 'REST' or 'GRAPHQL' to instantly switch transports
+      rest: { url: '/api/addToCart', method: 'POST', body: cartRequest },
+      // Note: Make sure to import your actual addToCart mutation document in this file!
+      graphql: { query: {} as any /* YOUR_ADD_TO_CART_MUTATION */, variables: { request: cartRequest }, extractKey: 'addToCart', isMutation: true }
+    }).subscribe({
       next: (data) => {
-        this.#orderResponse.set(data)
+        this.#orderResponse.set(data);
       },
-      error: () => console.error('error occurred')
-    })
+      error: (err) => console.error('error occurred', err)
+    });
 
  }
 

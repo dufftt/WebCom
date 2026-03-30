@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { CartServices } from '../../services/cart-service/cart-services';
 import { LoginService } from '../../services/authService/login-service';
+import { productItem } from '../../services/productService/productItemDTO';
 
 @Component({
   selector: 'app-grid-component',

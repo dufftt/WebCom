@@ -77,6 +77,10 @@ public class ProductGraphQlController {
           return productServiceFacade.getInventoryByProductId(id);
      
     }
+       @QueryMapping
+    public ProductDTO getProductById(@Argument Integer id) {
+        return productServiceFacade.getProduct(id);
+    }
      @QueryMapping
     public Integer getProductPriceByProductID(@Argument Integer id){
         return productServiceFacade.getProductPriceByProductID(id);
