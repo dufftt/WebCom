@@ -49,6 +49,7 @@ export class ProductServices {
       graphql: { query: getProductsList, extractKey: 'getProductsList' }
     }).subscribe({
       next: (data) => {
+        console.log(data);
         this.#productList.set(data);
       },
       error: (err) => console.error('error occurred', err)

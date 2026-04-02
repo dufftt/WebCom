@@ -6,6 +6,7 @@ type ProductDTO @key(fields: "productId"){
     productName: String!
     productDescription: String!
     price: Int!
+    productImageUrl: String
 }
 
 type InventoryDTO @key(fields: "inventoryId"){

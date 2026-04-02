@@ -4,7 +4,7 @@ export interface productItem{
     productId: number,
     productName: String,
     productDescription: String,
-    productPrice: number
+    price: number
     productImageUrl: String[]
 }
 

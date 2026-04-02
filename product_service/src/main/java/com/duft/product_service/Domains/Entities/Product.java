@@ -5,12 +5,17 @@ public class Product {
     private String productName;
     private String productDescription;
     private Integer price;
-    public Product(Integer productId, String productName, String productDescription, Integer price) {
+    private String productImageUrl;
+    
+    public Product(Integer productId, String productName, String productDescription, Integer price,
+            String productImageUrl) {
         this.productId = productId;
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
+        this.productImageUrl = productImageUrl;
     }
+
     public Product() {
     }
     public Integer getProductId() {
@@ -37,11 +42,23 @@ public class Product {
     public void setPrice(Integer price) {
         this.price = price;
     }
+
+      public String getProductImageUrl() {
+        return productImageUrl;
+    }
+
+    public void setProductImageUrl(String productImageUrl) {
+        this.productImageUrl = productImageUrl;
+    }
+
+    
     @Override
     public String toString() {
         return "Product [productId=" + productId + ", productName=" + productName + ", productDescription="
                 + productDescription + ", price=" + price + "]";
     }
+
+  
 
     
 }

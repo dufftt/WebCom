@@ -23,19 +23,19 @@ public class ProductBaseData {
     @PostConstruct
     public void InitializeData(){
        List<Product> products = new ArrayList<>();
-        products.add(new Product(null, "Iphone", "A mobile Phone", 25));
-        products.add(new Product(null, "Google Pixel", "Another mobile Phone", 45));
-        products.add(new Product(null, "Galaxy S25", "Best Phone", 55));
-        products.add(new Product(null, "Macbook", "A Laptop", 255));
-        products.add(new Product(null, "LOQ", "Best gaming Laptop", 275));
+        products.add(new Product(null, "Iphone", "A mobile Phone", 25,"/iphone.jpg"));
+        // products.add(new Product(null, "Google Pixel", "Another mobile Phone", 45,""));
+        // products.add(new Product(null, "Galaxy S25", "Best Phone", 55,""));
+        products.add(new Product(null, "JBL", "A HeadPhone worth Using", 255,"/headphone.jpg"));
+        products.add(new Product(null, "LOQ", "Best gaming Laptop", 275,"/laptop.jpg"));
         List<Product> addedProducts = productInventoryService.addAllProduct(products);
 
         List<Inventory> inventories = new ArrayList<>();
         inventories.add(new Inventory(null, addedProducts.get(0).getProductId(), 20, "Kolkata", 0));
-        inventories.add(new Inventory(null, addedProducts.get(1).getProductId(), 40, "Bangalore", 0));
-        inventories.add(new Inventory(null, addedProducts.get(2).getProductId(), 50, "Mumbai", 0));
-        inventories.add(new Inventory(null, addedProducts.get(3).getProductId(), 60, "Delhi", 0));
-        inventories.add(new Inventory(null, addedProducts.get(4).getProductId(), 80, "Bhopal", 0));
+        inventories.add(new Inventory(null, addedProducts.get(0).getProductId(), 40, "Bangalore", 0));
+        inventories.add(new Inventory(null, addedProducts.get(1).getProductId(), 50, "Mumbai", 0));
+        inventories.add(new Inventory(null, addedProducts.get(2).getProductId(), 60, "Delhi", 0));
+        inventories.add(new Inventory(null, addedProducts.get(2).getProductId(), 80, "Bhopal", 0));
         List<Inventory> addedInventories = productInventoryService.addAllInventories(inventories);
 
     }

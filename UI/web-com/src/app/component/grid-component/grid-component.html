@@ -7,7 +7,7 @@
             <img [src]="product.productImageUrl" alt="{{product.productName}}">
             <mat-card-content>
                 <h3>{{product.productName}}</h3>
-                <h3 class="price">${{product.productPrice}}</h3>
+                <h3 class="price">${{product.price}}</h3>
             </mat-card-content>
             <mat-card-actions>
                 <button matButton="filled" class="btn" (click)="addToCart(product, $event)">Add to Cart</button>

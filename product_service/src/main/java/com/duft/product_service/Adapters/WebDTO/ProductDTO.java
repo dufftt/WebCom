@@ -6,12 +6,15 @@ public class ProductDTO {
     private String productName;
     private String productDescription;
     private Integer price;
+    private String productImageUrl;
 
-    public ProductDTO(Integer price, String productDescription, Integer productId, String productName) {
-        this.price = price;
-        this.productDescription = productDescription;
+    public ProductDTO(Integer productId, String productName, String productDescription, Integer price,
+            String productImageUrl) {
         this.productId = productId;
         this.productName = productName;
+        this.productDescription = productDescription;
+        this.price = price;
+        this.productImageUrl = productImageUrl;
     }
 
     public ProductDTO() {
@@ -48,7 +51,15 @@ public class ProductDTO {
     public void setPrice(Integer price) {
         this.price = price;
     }
+      public String getProductImageUrl() {
+        return productImageUrl;
+    }
 
+    public void setProductImageUrl(String productImageUrl) {
+        this.productImageUrl = productImageUrl;
+    }
+
+    
     public boolean isValidProductDTO(){
        if(this.getProductId()!=null && this.getProductName()!=null && this.getProductDescription()!=null && this.getPrice()!=null) 
         {
@@ -68,6 +79,8 @@ public class ProductDTO {
         sb.append('}');
         return sb.toString();
     }
+
+  
 
 
 }

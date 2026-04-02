@@ -148,12 +148,15 @@ export const getProductPriceByProductID = gql`query Query($getProductPriceByProd
 }
 `
 
+
+
 export const getProductsList = gql`query Query {
   getProductsList {
     price
     productDescription
     productId
     productName
+    productImageUrl
   }
 }
 `
@@ -171,14 +174,15 @@ export const trackShipment = gql`query Query($trackId: String) {
 }
 `
 
-export const getProductById = gql`query {
-  getProductById(id: 1) {
-    productId
-    productName
+export const getProductById = gql`query GetProductById($getProductByIdId: Int!) {
+  getProductById(id: $getProductByIdId) {
     price
+    productDescription
+    productId
+    productImageUrl
+    productName
   }
-}
-`
+}`
 
 export const DeleteAddress = gql`mutation Query($deleteAddressId: Int!) {
   DeleteAddress(id: $deleteAddressId)
@@ -230,6 +234,7 @@ export interface ProductInput {
   productDescription?: String;    // Optional
   productId?: number;
   productName?: String;
+  productImageUrl?: String;
 }
 
 export const addAddress = gql`mutation Query($address: AddressInput!) {

@@ -44,6 +44,7 @@ public final class MapperUtils {
             productDTO.setProductName(product.getProductName());
             productDTO.setProductDescription(product.getProductDescription());
             productDTO.setPrice(product.getPrice());
+            productDTO.setProductImageUrl(product.getProductImageUrl());
             return productDTO;
            }else if(targetClass==Product.class && source instanceof ProductDTO){
             ProductDTO productDTO = (ProductDTO) source;
@@ -52,6 +53,7 @@ public final class MapperUtils {
             product.setProductName(productDTO.getProductName());
             product.setProductDescription(productDTO.getProductDescription());
             product.setPrice(productDTO.getPrice());
+            product.setProductImageUrl(productDTO.getProductImageUrl());
             return product;
            }else if(targetClass==ProductDTO.class && source instanceof ProductEntity){
             ProductEntity productEntity = (ProductEntity) source;
@@ -60,6 +62,7 @@ public final class MapperUtils {
             product.setProductName(productEntity.getProductName());
             product.setProductDescription(productEntity.getProductDescription());
             product.setPrice(productEntity.getPrice());
+            product.setProductImageUrl(productEntity.getProductImageUrl());
             return product;
            }else if(targetClass==ProductEntity.class && source instanceof ProductDTO){
             ProductDTO productDTO = (ProductDTO) source;
@@ -68,6 +71,7 @@ public final class MapperUtils {
             productEntity.setProductName(productDTO.getProductName());
             productEntity.setProductDescription(productDTO.getProductDescription());
             productEntity.setPrice(productDTO.getPrice());
+            productEntity.setProductImageUrl(productDTO.getProductImageUrl());
             return productEntity;
            }else if(targetClass==ProductEntity.class && source instanceof Product){
             Product product = (Product) source;
@@ -76,6 +80,7 @@ public final class MapperUtils {
             productEntity.setProductName(product.getProductName());
             productEntity.setProductDescription(product.getProductDescription());
             productEntity.setPrice(product.getPrice());
+            productEntity.setProductImageUrl(product.getProductImageUrl());
             return productEntity;
            }else if(targetClass==Product.class && source instanceof ProductEntity){
             ProductEntity productEntity = (ProductEntity) source;
@@ -84,6 +89,7 @@ public final class MapperUtils {
             product.setProductName(productEntity.getProductName());
             product.setProductDescription(productEntity.getProductDescription());
             product.setPrice(productEntity.getPrice());
+            product.setProductImageUrl(productEntity.getProductImageUrl());
             return product;
            }else if(targetClass==InventoryDTO.class && source instanceof Inventory){
             Inventory inventory = (Inventory) source;

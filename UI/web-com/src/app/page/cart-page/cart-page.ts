@@ -29,7 +29,7 @@ productItemLists = computed(() => this.cartService.cartItemList().map(cartItem =
           name: product()?.productName,
           imageUrl: product()?.productImageUrl,
           quantity: cartItem.quantity,
-          price: product()?.productPrice
+          price: product()?.price
 
   }
 }))
