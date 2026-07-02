@@ -17,7 +17,8 @@ import com.duft.product_service.Domains.exceptions.BadRequestException;
 import com.duft.product_service.Domains.exceptions.InventoryNotFoundException;
 import com.duft.product_service.Domains.exceptions.ProductNotFoundException;
 import com.duft.product_service.Utils.MapperUtils;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tools.jackson.databind.ObjectMapper;
 
 public class ProductServiceFacade {
 

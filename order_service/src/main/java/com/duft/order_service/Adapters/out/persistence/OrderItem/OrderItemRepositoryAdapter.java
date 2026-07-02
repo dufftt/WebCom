@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import com.duft.order_service.Port.OrderItemRepositoryPort;
 import com.duft.order_service.domain.entities.OrderItems;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tools.jackson.databind.ObjectMapper;
 
 @Repository
 public class OrderItemRepositoryAdapter implements OrderItemRepositoryPort {

@@ -3,7 +3,6 @@ package com.duft.shipping_service;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.graphql.autoconfigure.GraphQlSourceBuilderCustomizer;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.graphql.data.federation.FederationSchemaFactory;
 
@@ -15,7 +14,6 @@ import com.duft.shipping_service.domain.services.ShipmentService;
 import com.duft.shipping_service.port.ShipmentRepositoryPort;
 
 @SpringBootApplication
-@EnableDiscoveryClient
 public class ShippingServiceApplication {
 
 	public static void main(String[] args) {

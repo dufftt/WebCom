@@ -16,7 +16,8 @@ import com.duft.product_service.Adapters.WebDTO.LockOrReleaseInventoryDTO;
 import com.duft.product_service.Adapters.WebDTO.ProductDTO;
 import com.duft.product_service.Adapters.out.Controllers.ProductServiceFacade;
 import com.duft.product_service.Adapters.out.Controllers.RestController.ProductRestController;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tools.jackson.databind.ObjectMapper;
 
 @Controller
 public class ProductGraphQlController {

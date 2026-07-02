@@ -17,7 +17,8 @@ import com.duft.order_service.domain.entities.OrderItems;
 import com.duft.order_service.domain.exceptions.BadRequestException;
 import com.duft.order_service.domain.exceptions.OrderNotFoundException;
 import com.duft.order_service.domain.services.OrderService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tools.jackson.databind.ObjectMapper;
 
 public class OrderServiceFacade {
 

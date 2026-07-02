@@ -18,7 +18,8 @@ import com.duft.customer_service.Domain.use_cases.DeleteAddressUseCase;
 import com.duft.customer_service.Domain.use_cases.DeleteCustomerUseCase;
 import com.duft.customer_service.Domain.use_cases.UpdateAddressUseCase;
 import com.duft.customer_service.Utils.RedisConfig.RedisUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tools.jackson.databind.ObjectMapper;
 
 public class CustomerFacade {
     private final Logger logger = LoggerFactory.getLogger(CustomerFacade.class);

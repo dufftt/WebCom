@@ -5,11 +5,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import org.apache.commons.lang.math.RandomUtils;
 
 import com.duft.shipping_service.Adapters.WebDTO.UpdateStatusDTO;
 import com.duft.shipping_service.domain.entities.Shipments;
-import com.duft.shipping_service.domain.enums.Carriers;
 import com.duft.shipping_service.port.ShipmentRepositoryPort;
 
 public class ShipmentService {
