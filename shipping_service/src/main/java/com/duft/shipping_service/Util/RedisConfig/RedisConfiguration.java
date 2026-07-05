@@ -1,6 +1,7 @@
 package com.duft.shipping_service.Util.RedisConfig;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,14 +14,16 @@ import io.lettuce.core.api.sync.RedisCommands;
 public class RedisConfiguration {
     private static RedisCommands<String, String> redisCommands;
 
+    @Value("${REDIS_URL}")
+    private String redisUrl;
+
     public static RedisCommands<String, String> getRedisCommands() {
         return redisCommands;
     }
 
     @Bean(destroyMethod = "shutdown")
     public RedisClient redisClient(){
-        RedisURI redisURI = RedisURI.Builder.redis("localhost",6379).build();
-        return RedisClient.create(redisURI);
+        return RedisClient.create(redisUrl);
     }
     @Bean(destroyMethod = "close")
     public StatefulRedisConnection<String, String> connection(RedisClient redisClient){

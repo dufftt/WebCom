@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install Angular CLI globally inside the container
+RUN npm install -g @angular/cli@17
+
+# Copy dependency mappings and install them
+COPY package*.json ./
+RUN npm install
+
+# Copy the rest of the application
+COPY . .
+
+EXPOSE 4200
+
+# Run 'ng serve' and bind it to 0.0.0.0 so it can be accessed outside the container
+# --poll 2000 forces the container to check your laptop files for updates every 2 seconds
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200", "--poll", "2000"]

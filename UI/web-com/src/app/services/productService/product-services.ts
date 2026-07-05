@@ -6,6 +6,7 @@ import { ProductList, productItem } from './productItemDTO';
 import { Apollo } from 'apollo-angular';
 import { ApiService } from '../../shared/service/APIService';
 import { getProductById, getProductsList } from '../../shared/service/graphQLService/queries';
+import { pagedProductDTO } from './pagedProductDTO';
 
 @Injectable({
   providedIn: 'root',
