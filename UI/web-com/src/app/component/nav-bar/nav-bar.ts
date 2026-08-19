@@ -19,7 +19,7 @@ export class NavBar {
 
   router = inject(Router)
   authService = inject(LoginService)
-  isLoggedIn = this.authService.isLoggedin
+  isLoggedIn = this.authService.isLoggedIn
 
 goToHome() {
   this.router.navigate(['/home']);

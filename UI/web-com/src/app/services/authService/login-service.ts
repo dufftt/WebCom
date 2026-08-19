@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { catchError, map, of } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 
@@ -14,9 +14,10 @@ export class LoginService {
   #customerId = signal(localStorage.getItem('customerId') ?? '')
   customerId = this.#customerId.asReadonly();
   #customerName = signal(localStorage.getItem('name') ?? '')
+  #token = signal(localStorage.getItem(`token`)?? '')
   customerName = this.#customerName.asReadonly();
-  #isLoggedIn = signal(!!localStorage.getItem('customerId') && !!localStorage.getItem('token'))
-  isLoggedin = this.#isLoggedIn.asReadonly();
+  isLoggedIn = computed(() =>  !!this.#customerId() && this.#token())
+  //isLoggedin = this.#isLoggedIn;
 
 
   login(formData: any){
@@ -35,7 +36,7 @@ export class LoginService {
           localStorage.setItem('name',response.name.toString())
           localStorage.setItem('customerId',response.customerId.toString())
           this.#customerId.set(response.customerId.toString())
-          this.#isLoggedIn.set(true)
+          //this.#isLoggedIn.set(true)
 
           return true
         }
@@ -66,7 +67,7 @@ export class LoginService {
           localStorage.setItem('name',response.name.toString())
           localStorage.setItem('customerId',response.customerId.toString())
           this.#customerId.set(response.customerId.toString())
-          this.#isLoggedIn.set(true)
+          //this.#isLoggedIn.set(true)
           return true;
         }
         return false;
@@ -82,7 +83,7 @@ export class LoginService {
     localStorage.removeItem('customerId')
     localStorage.removeItem('name')
     this.#customerId.set('')
-    this.#isLoggedIn.set(false)
+    //this.#isLoggedIn.set(false)
   }
 
   

@@ -18,7 +18,7 @@ export class GridComponent {
   router = inject(Router)
   authService = inject(LoginService)
   cartService = inject(CartServices)
-  isLoggedIn = this.authService.isLoggedin
+  isLoggedIn = this.authService.isLoggedIn
   @Input() productList: productItem[] = []
 
   goToProduct(productId: number) {
@@ -28,7 +28,7 @@ export class GridComponent {
 
   addToCart(product: productItem, event: Event) {
   event.stopPropagation();
-  if(!this.authService.isLoggedin()){
+  if(!this.authService.isLoggedIn()){
     this.router.navigate(['/login'])
   }
   this.cartService.addToCart(product.productId)
